@@ -1,0 +1,233 @@
+@import "tailwindcss";
+
+/* Dark mode driven by next-themes (.dark class on <html>) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * San Antonio Operational Standard — design tokens migrated 1:1 from the
+ * Google Stitch export (Material 3 palette). See /lib/design-tokens.ts and
+ * /STITCH_ANALYSIS.md for the full mapping.
+ */
+:root {
+  /* Surfaces */
+  --background: #f7f9fb;
+  --surface: #ffffff;
+  --surface-low: #f2f4f6;
+  --surface-container: #eceef0;
+  --surface-high: #e6e8ea;
+  --surface-highest: #e0e3e5;
+  --on-surface: #191c1e;
+  --on-surface-variant: #45474d;
+  --outline: #75777e;
+  --outline-variant: #c5c6cd;
+
+  /* Brand — Corporate Navy + Security Blue */
+  --primary: #00030c;
+  --primary-container: #101d33;
+  --on-primary: #ffffff;
+  --on-primary-container: #7985a0;
+  --primary-fixed-dim: #bac7e4;
+  --on-primary-fixed-variant: #3b475f;
+
+  --secondary: #2d5dab;
+  --secondary-container: #80abfe;
+  --on-secondary: #ffffff;
+  --on-secondary-container: #003d85;
+
+  /* Functional status accents */
+  --success: #15803d;
+  --success-container: #dcfce7;
+  --on-success-container: #14532d;
+  --warning: #b45309;
+  --warning-container: #fef3c7;
+  --on-warning-container: #78350f;
+  --error: #ba1a1a;
+  --error-container: #ffdad6;
+  --on-error-container: #93000a;
+
+  --ring: #2d5dab;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: #0a0e14;
+  --surface: #111722;
+  --surface-low: #0e131c;
+  --surface-container: #161d2a;
+  --surface-high: #1c2533;
+  --surface-highest: #222c3c;
+  --on-surface: #e8ecf2;
+  --on-surface-variant: #a3adbd;
+  --outline: #5a6373;
+  --outline-variant: #2c3545;
+
+  --primary: #d7e3ff;
+  --primary-container: #0c1626;
+  --on-primary: #0e1b31;
+  --on-primary-container: #bac7e4;
+  --primary-fixed-dim: #bac7e4;
+  --on-primary-fixed-variant: #3b475f;
+
+  --secondary: #80abfe;
+  --secondary-container: #1f3a66;
+  --on-secondary: #00305f;
+  --on-secondary-container: #d7e3ff;
+
+  --success: #4ade80;
+  --success-container: #14331f;
+  --on-success-container: #bbf7d0;
+  --warning: #fbbf24;
+  --warning-container: #3a2a0a;
+  --on-warning-container: #fde68a;
+  --error: #ffb4ab;
+  --error-container: #5c0a0a;
+  --on-error-container: #ffdad6;
+
+  --ring: #80abfe;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-low: var(--surface-low);
+  --color-surface-container: var(--surface-container);
+  --color-surface-high: var(--surface-high);
+  --color-surface-highest: var(--surface-highest);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-outline: var(--outline);
+  --color-outline-variant: var(--outline-variant);
+
+  --color-primary: var(--primary);
+  --color-primary-container: var(--primary-container);
+  --color-on-primary: var(--on-primary);
+  --color-on-primary-container: var(--on-primary-container);
+  --color-primary-fixed-dim: var(--primary-fixed-dim);
+  --color-on-primary-fixed-variant: var(--on-primary-fixed-variant);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-container: var(--secondary-container);
+  --color-on-secondary: var(--on-secondary);
+  --color-on-secondary-container: var(--on-secondary-container);
+
+  --color-success: var(--success);
+  --color-success-container: var(--success-container);
+  --color-on-success-container: var(--on-success-container);
+  --color-warning: var(--warning);
+  --color-warning-container: var(--warning-container);
+  --color-on-warning-container: var(--on-warning-container);
+  --color-error: var(--error);
+  --color-error-container: var(--error-container);
+  --color-on-error-container: var(--on-error-container);
+
+  --color-ring: var(--ring);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-manrope), var(--font-inter), ui-sans-serif, sans-serif;
+
+  /* Stitch Material 3 type scale */
+  --text-label-sm: 0.6875rem;
+  --text-label-sm--line-height: 0.875rem;
+  --text-label-md: 0.75rem;
+  --text-label-md--line-height: 1rem;
+  --text-display-lg: 2rem;
+  --text-display-lg--line-height: 2.5rem;
+  --text-display-lg--letter-spacing: -0.02em;
+
+  --radius-lg: var(--radius);
+  --radius-xl: 0.75rem;
+}
+
+* {
+  border-color: var(--outline-variant);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--on-surface);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Metadata label layer (uppercase tracked, ERP convention) */
+.label-meta {
+  font-size: var(--text-label-md);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Shimmer for skeleton loaders */
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--on-surface) 6%, transparent),
+    transparent
+  );
+  animation: shimmer 1.6s infinite;
+}
+
+/* Animated gradient mesh used behind heroes & dashboards */
+@keyframes mesh-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(3%, -4%, 0) scale(1.08);
+  }
+  66% {
+    transform: translate3d(-3%, 3%, 0) scale(1.05);
+  }
+}
+.mesh-blob {
+  animation: mesh-drift 18s ease-in-out infinite;
+  will-change: transform;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--secondary) 28%, transparent);
+}
+
+/* Thin institutional scrollbars */
+.thin-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.thin-scroll::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--on-surface) 18%, transparent);
+  border-radius: 9999px;
+}
+.thin-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
