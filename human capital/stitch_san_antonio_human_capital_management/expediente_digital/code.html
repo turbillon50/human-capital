@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Expediente Digital - San Antonio Seguridad</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#bac7e4",
+                        "on-secondary-container": "#003d85",
+                        "secondary": "#2d5dab",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "tertiary-container": "#0d1e31",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e0e3e5",
+                        "secondary-container": "#80abfe",
+                        "inverse-surface": "#2d3133",
+                        "inverse-primary": "#bac7e4",
+                        "surface-tint": "#525f78",
+                        "on-primary-fixed-variant": "#3b475f",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#76869e",
+                        "tertiary": "#00030a",
+                        "surface-container-high": "#e6e8ea",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed": "#001a41",
+                        "on-primary-container": "#7985a0",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-secondary-fixed-variant": "#054491",
+                        "primary": "#00030c",
+                        "surface-dim": "#d8dadc",
+                        "on-surface-variant": "#45474d",
+                        "tertiary-fixed": "#d3e4fe",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "background": "#f7f9fb",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-bright": "#f7f9fb",
+                        "primary-container": "#101d33",
+                        "surface-container": "#eceef0",
+                        "surface-container-low": "#f2f4f6",
+                        "on-background": "#191c1e",
+                        "surface": "#f7f9fb",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "surface-variant": "#e0e3e5",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#d7e3ff",
+                        "outline-variant": "#c5c6cd",
+                        "secondary-fixed": "#d8e2ff",
+                        "on-primary-fixed": "#0e1b31",
+                        "outline": "#75777e",
+                        "on-surface": "#191c1e",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "container-max": "1440px",
+                        "gutter": "20px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .striped-table tr:nth-child(even) {
+            background-color: #F1F5F9;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex overflow-hidden">
+<!-- Navigation Drawer (Desktop Sidebar) -->
+<aside class="hidden md:flex flex-col h-full py-lg bg-primary dark:bg-tertiary-container text-on-primary dark:text-on-tertiary-container w-[260px] shadow-xl z-50 shrink-0">
+<div class="px-lg mb-xl">
+<h1 class="text-headline-md font-headline-md text-on-primary">SAN ANTONIO</h1>
+<p class="text-label-sm font-label-sm opacity-70">SEGURIDAD PRIVADA</p>
+</div>
+<nav class="flex-1 space-y-1 custom-scrollbar overflow-y-auto pr-sm">
+<!-- Mapping JSON items for Navigation Drawer -->
+<a class="flex items-center gap-md px-lg py-sm text-primary-fixed-dim dark:text-on-tertiary-fixed-variant hover:bg-on-primary-fixed-variant hover:translate-x-1 transition-transform duration-200 group" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-lg py-sm bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-r-full font-bold scale-[0.98]" href="#">
+<span class="material-symbols-outlined">badge</span>
+<span class="font-body-md">Empleados</span>
+</a>
+<a class="flex items-center gap-md px-lg py-sm text-primary-fixed-dim dark:text-on-tertiary-fixed-variant hover:bg-on-primary-fixed-variant hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-body-md">Expedientes</span>
+</a>
+<a class="flex items-center gap-md px-lg py-sm text-primary-fixed-dim dark:text-on-tertiary-fixed-variant hover:bg-on-primary-fixed-variant hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-body-md">Contratos</span>
+</a>
+<a class="flex items-center gap-md px-lg py-sm text-primary-fixed-dim dark:text-on-tertiary-fixed-variant hover:bg-on-primary-fixed-variant hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">report_problem</span>
+<span class="font-body-md">Incidencias</span>
+</a>
+<a class="flex items-center gap-md px-lg py-sm text-primary-fixed-dim dark:text-on-tertiary-fixed-variant hover:bg-on-primary-fixed-variant hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">medical_services</span>
+<span class="font-body-md">Incapacidades</span>
+</a>
+<a class="flex items-center gap-md px-lg py-sm text-primary-fixed-dim dark:text-on-tertiary-fixed-variant hover:bg-on-primary-fixed-variant hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">event</span>
+<span class="font-body-md">Vacaciones</span>
+</a>
+<a class="flex items-center gap-md px-lg py-sm text-primary-fixed-dim dark:text-on-tertiary-fixed-variant hover:bg-on-primary-fixed-variant hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">gavel</span>
+<span class="font-body-md">Actas Administrativas</span>
+</a>
+<div class="mt-xl pt-xl border-t border-on-primary-fixed-variant opacity-40"></div>
+<a class="flex items-center gap-md px-lg py-sm text-primary-fixed-dim dark:text-on-tertiary-fixed-variant hover:bg-on-primary-fixed-variant hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md">Configuración</span>
+</a>
+</nav>
+<div class="mt-auto px-lg pt-lg border-t border-on-primary-fixed-variant">
+<div class="flex items-center gap-md">
+<img alt="Director General" class="w-10 h-10 rounded-full object-cover border-2 border-secondary-container" data-alt="Close-up professional portrait of a senior security executive with a serious but approachable expression, wearing a crisp formal dark corporate uniform. The lighting is sharp, emphasizing authority, set against a clean, blurred office background with cool blue and silver tones characteristic of a high-end corporate environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZm2EVLA5kaxnr26ts1I4gX5D4nn045Z6s9W6dI1k-cyHs7AgffYzENu-kBlZJ7vmtqcpS7WzLmX42Ia-m4Jl2UfgByIihmWJ4d_0RyQ-HkZOybRSbQZXKSBixOaWCYXbOQ3GN7cSs02cCNNVBQVM4mgE-xEl6kaO5h_oJJU4nTrVf3FZSp2pWkW-96HByR6Ew1IEuOidTQPu5YjyJqi7exBWz1WtH-v-HOKHY3AZLmh-MCmX0eg7RN8YD73r_YGQJh_RDNk2LKBw"/>
+<div>
+<p class="text-body-md font-bold leading-tight">Director General</p>
+<p class="text-label-sm opacity-70 uppercase tracking-wider">Admin</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col min-w-0 h-screen relative bg-surface overflow-y-auto md:overflow-hidden">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center w-full px-lg py-md bg-surface dark:bg-primary-container border-b border-outline-variant dark:border-outline sticky top-0 z-40">
+<div class="flex items-center gap-md">
+<button class="md:hidden p-xs hover:bg-surface-container-high transition-colors rounded">
+<span class="material-symbols-outlined text-primary">menu</span>
+</button>
+<div class="flex flex-col">
+<h2 class="text-title-lg font-title-lg font-bold text-primary dark:text-inverse-primary leading-tight">Expediente del Empleado</h2>
+<div class="flex items-center gap-xs md:hidden">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+<span class="text-label-sm font-label-sm">Activo</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-xs text-on-surface-variant hover:bg-surface-container-high transition-colors rounded">
+<span class="material-symbols-outlined">search</span>
+</button>
+<div class="relative">
+<button class="p-xs text-on-surface-variant hover:bg-surface-container-high transition-colors rounded">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full border-2 border-surface"></span>
+</button>
+</div>
+<div class="hidden md:flex items-center gap-sm ml-md">
+<img class="w-8 h-8 rounded-full border border-outline-variant" data-alt="Professional profile headshot of a male business executive for a corporate dashboard avatar, soft neutral lighting, high-quality skin texture, silver-white minimalist background, corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKJtF7sIlCG1IxFhtzlQ0XpTBtQ1fj11EvPQ1CdiURvXAnyDNE-90cZMTdCkzgGvytIj2PnGQoUnFnUiS_11d2Oyn9M_5k23i-HYtXofyq5gy26r_oRQv-VE_SXi230H1ue4FqX1Qcre836BAQlObZEAiJGtRrjXsv2puSYoP3JvRYUDYmZcK0CQxYwAl7sZuegq3OhHRDK_-8RbHxkJodrhsxxPWPZ5UWsUtfshXqJmABWqEwJk9YcRvkhAHHS2K-vitRozXXfcw"/>
+<span class="text-label-md font-label-md text-primary">Director General</span>
+</div>
+</div>
+</header>
+<!-- Employee Summary Header -->
+<section class="p-lg bg-surface border-b border-outline-variant">
+<div class="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-lg">
+<div class="relative">
+<img class="w-32 h-32 rounded-full border-4 border-white shadow-md object-cover" data-alt="Professional studio portrait of a corporate security officer, wearing a high-quality navy blue uniform with visible security patches. The lighting is focused and clean, highlighting a professional and reliable demeanor. The background is a soft, out-of-focus professional office interior with metallic and glass elements, adhering to a modern corporate style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxHC3mmOVhLEwqG57E4ev1rSIQJVv7SjVvzsxXq5gJmbO1MdVFE7w8rDGyLATS5Uv473_XW85PwPENl_Xn3Qbj4BJwf3sGpkj3cZgY0RtE4KQrsRyVshAj7_qkrNuNNBhyzi96Q3EwdxyTJBcOSphYpc0V6goA6zGQVPxSVCwB5rahyR3KjUPg_HoHCpayrGfhx5zCVvvJQM_UKXFItqpIHKlDC_mkPmkS6EoC65pVmp0E-T2xk0uome_wGkKYi3SdtPQlCJISZ4Q"/>
+<div class="absolute bottom-1 right-1 bg-green-500 w-6 h-6 rounded-full border-4 border-white"></div>
+</div>
+<div class="flex-1 text-center md:text-left">
+<div class="flex flex-col md:flex-row md:items-center gap-sm mb-xs">
+<h3 class="text-display-lg font-display-lg text-primary">Carlos Alberto Ruiz Martínez</h3>
+<span class="inline-flex px-3 py-1 bg-green-100 text-green-700 text-label-sm font-bold rounded-full w-fit mx-auto md:mx-0">ACTIVO</span>
+</div>
+<p class="text-title-lg text-on-surface-variant mb-md">Guardia de Seguridad</p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-md md:gap-xl text-left">
+<div>
+<p class="text-label-md text-on-surface-variant uppercase mb-xs">ID Empleado</p>
+<p class="text-body-md font-bold">EMP-1287</p>
+</div>
+<div>
+<p class="text-label-md text-on-surface-variant uppercase mb-xs">Fecha Ingreso</p>
+<p class="text-body-md font-bold">02/01/2022</p>
+</div>
+<div>
+<p class="text-label-md text-on-surface-variant uppercase mb-xs">Antigüedad</p>
+<p class="text-body-md font-bold">2 años, 4 meses</p>
+</div>
+<div>
+<p class="text-label-md text-on-surface-variant uppercase mb-xs">Supervisor</p>
+<p class="text-body-md font-bold">Luis Fernando Gómez</p>
+</div>
+</div>
+</div>
+<div class="w-full md:w-auto">
+<button class="w-full md:w-auto px-lg py-md bg-primary text-on-primary font-bold rounded-lg hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-sm">
+                        Acciones
+                        <span class="material-symbols-outlined">expand_more</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Tabs Navigation -->
+<nav class="bg-surface border-b border-outline-variant px-lg sticky top-0 z-30">
+<div class="max-w-screen-xl mx-auto flex gap-xl">
+<button class="px-md py-lg text-on-surface-variant font-label-md border-b-2 border-transparent hover:text-primary transition-colors">INFORMACIÓN</button>
+<button class="px-md py-lg text-primary font-bold border-b-4 border-primary font-label-md">DOCUMENTOS</button>
+<button class="px-md py-lg text-on-surface-variant font-label-md border-b-2 border-transparent hover:text-primary transition-colors">HISTORIAL</button>
+<button class="px-md py-lg text-on-surface-variant font-label-md border-b-2 border-transparent hover:text-primary transition-colors">INCIDENCIAS</button>
+<button class="px-md py-lg text-on-surface-variant font-label-md border-b-2 border-transparent hover:text-primary transition-colors">VACACIONES</button>
+</div>
+</nav>
+<!-- Document Vault Content -->
+<div class="flex-1 p-lg md:overflow-y-auto custom-scrollbar">
+<div class="max-w-screen-xl mx-auto">
+<div class="flex justify-between items-center mb-lg">
+<h4 class="text-title-lg font-bold text-primary">Documentos del expediente</h4>
+<p class="text-label-md text-on-surface-variant">6 de 8 documentos cargados</p>
+</div>
+<!-- Bento Grid for Documents -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-lg mb-xl">
+<!-- Document Card: INE -->
+<div class="bg-white p-lg rounded-xl border border-outline-variant hover:shadow-lg transition-shadow group">
+<div class="flex justify-between items-start mb-md">
+<div class="p-sm bg-surface-container-low rounded-lg text-on-secondary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">description</span>
+</div>
+<span class="text-label-sm font-bold text-green-600 bg-green-50 px-2 py-1 rounded">VALIDADO</span>
+</div>
+<h5 class="text-title-lg font-bold mb-xs">INE</h5>
+<p class="text-label-sm text-on-surface-variant mb-md">Identificación Oficial</p>
+<div class="flex items-center gap-sm pt-md border-t border-outline-variant">
+<span class="material-symbols-outlined text-error text-[20px]">picture_as_pdf</span>
+<span class="text-label-sm text-on-surface-variant">Cargado: 02/01/2022</span>
+</div>
+</div>
+<!-- Document Card: CURP -->
+<div class="bg-white p-lg rounded-xl border border-outline-variant hover:shadow-lg transition-shadow">
+<div class="flex justify-between items-start mb-md">
+<div class="p-sm bg-surface-container-low rounded-lg text-on-secondary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">assignment_ind</span>
+</div>
+<span class="text-label-sm font-bold text-green-600 bg-green-50 px-2 py-1 rounded">VALIDADO</span>
+</div>
+<h5 class="text-title-lg font-bold mb-xs">CURP</h5>
+<p class="text-label-sm text-on-surface-variant mb-md">Documento Oficial</p>
+<div class="flex items-center gap-sm pt-md border-t border-outline-variant">
+<span class="material-symbols-outlined text-error text-[20px]">picture_as_pdf</span>
+<span class="text-label-sm text-on-surface-variant">Cargado: 02/01/2022</span>
+</div>
+</div>
+<!-- Document Card: RFC -->
+<div class="bg-white p-lg rounded-xl border border-outline-variant hover:shadow-lg transition-shadow">
+<div class="flex justify-between items-start mb-md">
+<div class="p-sm bg-surface-container-low rounded-lg text-on-secondary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+</div>
+<span class="text-label-sm font-bold text-green-600 bg-green-50 px-2 py-1 rounded">VALIDADO</span>
+</div>
+<h5 class="text-title-lg font-bold mb-xs">RFC</h5>
+<p class="text-label-sm text-on-surface-variant mb-md">Documento Fiscal</p>
+<div class="flex items-center gap-sm pt-md border-t border-outline-variant">
+<span class="material-symbols-outlined text-error text-[20px]">picture_as_pdf</span>
+<span class="text-label-sm text-on-surface-variant">Cargado: 02/01/2022</span>
+</div>
+</div>
+<!-- Document Card: NSS -->
+<div class="bg-white p-lg rounded-xl border border-outline-variant hover:shadow-lg transition-shadow">
+<div class="flex justify-between items-start mb-md">
+<div class="p-sm bg-surface-container-low rounded-lg text-on-secondary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">health_and_safety</span>
+</div>
+<span class="text-label-sm font-bold text-green-600 bg-green-50 px-2 py-1 rounded">VALIDADO</span>
+</div>
+<h5 class="text-title-lg font-bold mb-xs">NSS</h5>
+<p class="text-label-sm text-on-surface-variant mb-md">Número de Seguridad Social</p>
+<div class="flex items-center gap-sm pt-md border-t border-outline-variant">
+<span class="material-symbols-outlined text-error text-[20px]">picture_as_pdf</span>
+<span class="text-label-sm text-on-surface-variant">Cargado: 02/01/2022</span>
+</div>
+</div>
+<!-- Document Card: Comprobante de Domicilio -->
+<div class="bg-white p-lg rounded-xl border border-outline-variant hover:shadow-lg transition-shadow">
+<div class="flex justify-between items-start mb-md">
+<div class="p-sm bg-surface-container-low rounded-lg text-on-secondary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+</div>
+<span class="text-label-sm font-bold text-amber-600 bg-amber-50 px-2 py-1 rounded">POR VENCER</span>
+</div>
+<h5 class="text-title-lg font-bold mb-xs">Comprobante de Domicilio</h5>
+<p class="text-label-sm text-on-surface-variant mb-md">Recibo de Luz / Agua</p>
+<div class="flex items-center gap-sm pt-md border-t border-outline-variant">
+<span class="material-symbols-outlined text-error text-[20px]">picture_as_pdf</span>
+<span class="text-label-sm text-on-surface-variant">Cargado: 02/01/2022</span>
+</div>
+</div>
+<!-- Document Card: Contrato Laboral -->
+<div class="bg-white p-lg rounded-xl border border-outline-variant hover:shadow-lg transition-shadow">
+<div class="flex justify-between items-start mb-md">
+<div class="p-sm bg-surface-container-low rounded-lg text-on-secondary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">history_edu</span>
+</div>
+<span class="text-label-sm font-bold text-green-600 bg-green-50 px-2 py-1 rounded">VIGENTE</span>
+</div>
+<h5 class="text-title-lg font-bold mb-xs">Contrato Laboral</h5>
+<p class="text-label-sm text-on-surface-variant mb-md">Contrato Indefinido</p>
+<div class="flex items-center gap-sm pt-md border-t border-outline-variant">
+<span class="material-symbols-outlined text-error text-[20px]">picture_as_pdf</span>
+<span class="text-label-sm text-on-surface-variant">Cargado: 02/01/2022</span>
+</div>
+</div>
+<!-- Document Card: Carta Antecedentes -->
+<div class="bg-white p-lg rounded-xl border border-outline-variant hover:shadow-lg transition-shadow">
+<div class="flex justify-between items-start mb-md">
+<div class="p-sm bg-surface-container-low rounded-lg text-on-secondary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<span class="text-label-sm font-bold text-green-600 bg-green-50 px-2 py-1 rounded">VALIDADO</span>
+</div>
+<h5 class="text-title-lg font-bold mb-xs">Antecedentes Penales</h5>
+<p class="text-label-sm text-on-surface-variant mb-md">Carta de No Antecedentes</p>
+<div class="flex items-center gap-sm pt-md border-t border-outline-variant">
+<span class="material-symbols-outlined text-error text-[20px]">picture_as_pdf</span>
+<span class="text-label-sm text-on-surface-variant">Cargado: 02/01/2022</span>
+</div>
+</div>
+<!-- Upload Action Card -->
+<button class="bg-surface-container-low border-2 border-dashed border-outline-variant rounded-xl p-lg flex flex-col items-center justify-center text-center hover:bg-surface-container-high transition-colors group">
+<div class="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm mb-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-[32px]">upload_file</span>
+</div>
+<h5 class="text-title-lg font-bold text-primary mb-xs">Subir Documento</h5>
+<p class="text-label-sm text-on-surface-variant">Arrastra o selecciona un archivo (PDF, JPG)</p>
+</button>
+</div>
+<!-- Recent Activity in Documents -->
+<div class="bg-white border border-outline-variant rounded-xl overflow-hidden mb-xl">
+<div class="px-lg py-md bg-surface-container-low border-b border-outline-variant flex justify-between items-center">
+<h4 class="text-label-md font-bold text-primary uppercase tracking-wider">Historial de Documentación</h4>
+<button class="text-label-md text-secondary font-bold hover:underline">Ver todo el historial</button>
+</div>
+<table class="w-full text-left striped-table">
+<thead class="bg-surface-container text-on-surface-variant text-label-md">
+<tr>
+<th class="px-lg py-md font-bold">DOCUMENTO</th>
+<th class="px-lg py-md font-bold">ACCIÓN</th>
+<th class="px-lg py-md font-bold">USUARIO</th>
+<th class="px-lg py-md font-bold">FECHA</th>
+<th class="px-lg py-md font-bold">ESTATUS</th>
+</tr>
+</thead>
+<tbody class="text-body-sm">
+<tr>
+<td class="px-lg py-md font-bold">Comprobante de Domicilio</td>
+<td class="px-lg py-md">Actualización</td>
+<td class="px-lg py-md">RH_Admin_02</td>
+<td class="px-lg py-md">15/05/2024, 10:20 AM</td>
+<td class="px-lg py-md">
+<span class="inline-flex px-2 py-0.5 bg-amber-100 text-amber-700 rounded-full font-bold text-[10px]">PENDIENTE VALIDACIÓN</span>
+</td>
+</tr>
+<tr>
+<td class="px-lg py-md font-bold">Contrato Laboral</td>
+<td class="px-lg py-md">Renovación</td>
+<td class="px-lg py-md">RH_Director</td>
+<td class="px-lg py-md">10/01/2024, 02:45 PM</td>
+<td class="px-lg py-md">
+<span class="inline-flex px-2 py-0.5 bg-green-100 text-green-700 rounded-full font-bold text-[10px]">AUTORIZADO</span>
+</td>
+</tr>
+<tr>
+<td class="px-lg py-md font-bold">INE</td>
+<td class="px-lg py-md">Carga Inicial</td>
+<td class="px-lg py-md">RH_Admin_01</td>
+<td class="px-lg py-md">02/01/2022, 09:15 AM</td>
+<td class="px-lg py-md">
+<span class="inline-flex px-2 py-0.5 bg-green-100 text-green-700 rounded-full font-bold text-[10px]">AUTORIZADO</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- FAB for Mobile (Contextual: Add Document) -->
+<button class="md:hidden fixed bottom-24 right-6 w-14 h-14 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center active:scale-90 transition-transform z-50">
+<span class="material-symbols-outlined text-[32px]">add</span>
+</button>
+<!-- Bottom Nav Bar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-primary dark:bg-primary-container text-on-primary px-4 pb-4 pt-2 flex justify-around items-center border-t border-on-primary-fixed-variant shadow-lg z-50">
+<a class="flex flex-col items-center justify-center text-primary-fixed-dim opacity-70 hover:opacity-100 transition-opacity" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-sm font-label-sm">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl px-4 py-1 scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-label-sm font-label-sm">Empleados</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary-fixed-dim opacity-70 hover:opacity-100 transition-opacity" href="#">
+<span class="material-symbols-outlined">folder_shared</span>
+<span class="text-label-sm font-label-sm">Expedientes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary-fixed-dim opacity-70 hover:opacity-100 transition-opacity" href="#">
+<span class="material-symbols-outlined">more_horiz</span>
+<span class="text-label-sm font-label-sm">Más</span>
+</a>
+</nav>
+</main>
+<!-- Micro-interactions Script -->
+<script>
+        // Simple logic for hover effects and active states if needed
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('mousedown', () => {
+                el.style.transform = 'scale(0.97)';
+            });
+            el.addEventListener('mouseup', () => {
+                el.style.transform = '';
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = '';
+            });
+        });
+
+        // Search highlight simulation
+        const searchBtn = document.querySelector('header button span[textContent="search"]');
+        if(searchBtn) {
+            searchBtn.parentElement.addEventListener('click', () => {
+                console.log('Searching employee database...');
+            });
+        }
+    </script>
+</body></html>

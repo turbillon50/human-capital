@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Expediente del Empleado - San Antonio Seguridad</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#bac7e4",
+                    "on-secondary-container": "#003d85",
+                    "secondary": "#2d5dab",
+                    "tertiary-fixed-dim": "#b7c8e1",
+                    "tertiary-container": "#0d1e31",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-highest": "#e0e3e5",
+                    "secondary-container": "#80abfe",
+                    "inverse-surface": "#2d3133",
+                    "inverse-primary": "#bac7e4",
+                    "surface-tint": "#525f78",
+                    "on-primary-fixed-variant": "#3b475f",
+                    "error": "#ba1a1a",
+                    "on-tertiary-container": "#76869e",
+                    "tertiary": "#00030a",
+                    "surface-container-high": "#e6e8ea",
+                    "error-container": "#ffdad6",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed": "#001a41",
+                    "on-primary-container": "#7985a0",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "on-secondary-fixed-variant": "#054491",
+                    "primary": "#00030c",
+                    "surface-dim": "#d8dadc",
+                    "on-surface-variant": "#45474d",
+                    "tertiary-fixed": "#d3e4fe",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "background": "#f7f9fb",
+                    "on-tertiary-fixed-variant": "#38485d",
+                    "inverse-on-surface": "#eff1f3",
+                    "surface-bright": "#f7f9fb",
+                    "primary-container": "#101d33",
+                    "surface-container": "#eceef0",
+                    "surface-container-low": "#f2f4f6",
+                    "on-background": "#191c1e",
+                    "surface": "#f7f9fb",
+                    "on-tertiary-fixed": "#0b1c30",
+                    "surface-variant": "#e0e3e5",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed": "#d7e3ff",
+                    "outline-variant": "#c5c6cd",
+                    "secondary-fixed": "#d8e2ff",
+                    "on-primary-fixed": "#0e1b31",
+                    "outline": "#75777e",
+                    "on-surface": "#191c1e",
+                    "on-tertiary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "container-max": "1440px",
+                    "gutter": "20px",
+                    "md": "16px",
+                    "xl": "32px",
+                    "sm": "8px",
+                    "lg": "24px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: #f7f9fb; }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .profile-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+        }
+        .sidebar-active {
+            background-color: #80abfe;
+            color: #003d85;
+            border-radius: 0 9999px 9999px 0;
+            font-weight: 700;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface">
+<div class="flex min-h-screen">
+<!-- Sidebar / NavigationDrawer -->
+<aside class="hidden md:flex flex-col h-screen py-lg bg-primary w-[260px] fixed left-0 top-0 z-40">
+<div class="px-lg mb-xl">
+<h1 class="text-headline-md font-headline-md text-on-primary">San Antonio</h1>
+<p class="text-label-sm font-label-sm text-primary-fixed-dim opacity-70">Seguridad Privada</p>
+</div>
+<div class="flex items-center px-lg mb-xl space-x-md">
+<img class="w-12 h-12 rounded-full border-2 border-primary-fixed" data-alt="A professional portrait of a senior security director in a tailored dark suit. He has a confident expression, set against a blurred corporate office background with cool blue tones and modern glass architecture. The lighting is crisp and executive, matching a high-end HR dashboard aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUSxti1S56hubbkVKtllULXrpFjyCF_x-uohpfMZM0Oz-gRE7ew64vjSsEbSmLONqfhxHOYUd2JjVbu-Gd1YZk8A35AlPEuj_Woyqg1vCp_af9j30DmJPcsJya2xjT4Qe8eSXrTIn--TaLMwiDz7fVaIQJD7oBDO2h3iclwM-DDpxxYh4mEXRuhP08m6FOi5XBXRNZxN_gKNHsKFz9NFHb_ZPfYhrhD2A2DPd0_jbQMSgqIlKGlkL2fA2KpT1iY1NqNvcuUsdvMEU"/>
+<div>
+<p class="text-label-md font-label-md text-on-primary">Director General</p>
+<p class="text-label-sm font-label-sm text-primary-fixed-dim">Admin</p>
+</div>
+</div>
+<nav class="flex-1 space-y-xs pr-lg">
+<a class="flex items-center space-x-md px-lg py-md text-primary-fixed-dim hover:bg-on-primary-fixed-variant transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-body-md font-body-md">Dashboard</span>
+</a>
+<a class="sidebar-active flex items-center space-x-md px-lg py-md transition-all scale-[0.98]" href="#">
+<span class="material-symbols-outlined">badge</span>
+<span class="text-body-md font-body-md">Empleados</span>
+</a>
+<a class="flex items-center space-x-md px-lg py-md text-primary-fixed-dim hover:bg-on-primary-fixed-variant transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-body-md font-body-md">Expedientes</span>
+</a>
+<a class="flex items-center space-x-md px-lg py-md text-primary-fixed-dim hover:bg-on-primary-fixed-variant transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="text-body-md font-body-md">Contratos</span>
+</a>
+<a class="flex items-center space-x-md px-lg py-md text-primary-fixed-dim hover:bg-on-primary-fixed-variant transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">report_problem</span>
+<span class="text-body-md font-body-md">Incidencias</span>
+</a>
+<a class="flex items-center space-x-md px-lg py-md text-primary-fixed-dim hover:bg-on-primary-fixed-variant transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">medical_services</span>
+<span class="text-body-md font-body-md">Incapacidades</span>
+</a>
+<a class="flex items-center space-x-md px-lg py-md text-primary-fixed-dim hover:bg-on-primary-fixed-variant transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">event</span>
+<span class="text-body-md font-body-md">Vacaciones</span>
+</a>
+<div class="mt-xl pt-lg border-t border-on-primary-fixed-variant opacity-30"></div>
+<a class="flex items-center space-x-md px-lg py-md text-primary-fixed-dim hover:bg-on-primary-fixed-variant transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-body-md font-body-md">Configuración</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 md:ml-[260px] pb-xl md:pb-0">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-lg py-md bg-surface border-b border-outline-variant sticky top-0 z-30">
+<div class="flex items-center space-x-md">
+<span class="material-symbols-outlined text-primary md:hidden">menu</span>
+<h2 class="text-title-lg font-title-lg font-bold text-primary">Expediente del Empleado</h2>
+</div>
+<div class="flex items-center space-x-lg">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">search</span>
+<div class="relative cursor-pointer">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">notifications</span>
+<span class="absolute -top-1 -right-1 bg-error text-on-error text-[10px] w-4 h-4 flex items-center justify-center rounded-full">3</span>
+</div>
+<img class="w-8 h-8 rounded-full" data-alt="A focused close-up of a high-ranking executive in a professional setting. The person has a serious and capable demeanor, illuminated by natural daylight from a large window in a modern office space. The visual style is professional, sharp, and perfectly aligned with the institutional brand identity of the platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwO2ncwWr_o5y4l1r0njDIJABdNfO4WooVoomFuUecDJ-IjEljdo0bMCH69L5xoeXjV9dAzjgBqCPnmSwFZNDyNP9zypj7IJ-Ua9Ol9MyA0qE5gdNdNX4mWTeaaYdBtgc5GAxupapkpXq9PnhUTmX8mbZeDGvJqZ56WcJHfU40RzzsjLXPNFVrUgluWAtXG1jmgQrdmvskweLWKG1gk4vGuakhi040gcFXR0V3e_eOqehIrpa2-0SgFvgnyOXfiNcKsy_TlWp97y4"/>
+</div>
+</header>
+<!-- Navigation Tabs (Task-Focused) -->
+<div class="px-lg py-sm bg-white border-b border-outline-variant flex space-x-xl overflow-x-auto no-scrollbar">
+<button class="text-label-md font-label-md py-md text-on-surface-variant hover:text-primary transition-colors whitespace-nowrap">Información</button>
+<button class="text-label-md font-label-md py-md text-primary border-b-2 border-primary whitespace-nowrap">Documentos</button>
+<button class="text-label-md font-label-md py-md text-on-surface-variant hover:text-primary transition-colors whitespace-nowrap">Historial</button>
+<button class="text-label-md font-label-md py-md text-on-surface-variant hover:text-primary transition-colors whitespace-nowrap">Incidencias</button>
+<button class="text-label-md font-label-md py-md text-on-surface-variant hover:text-primary transition-colors whitespace-nowrap">Vacaciones</button>
+<button class="text-label-md font-label-md py-md text-on-surface-variant hover:text-primary transition-colors whitespace-nowrap">Evaluaciones</button>
+</div>
+<!-- Content Area -->
+<div class="p-lg max-w-container-max mx-auto space-y-lg">
+<!-- Profile Header Card -->
+<div class="profile-card p-xl flex flex-col md:flex-row items-center md:items-start gap-xl">
+<div class="relative">
+<img class="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-surface-container shadow-sm" data-alt="A professional security officer portrait. The subject is wearing a crisp, formal navy blue security uniform with a subtle silver badge. He looks confident and disciplined, positioned against a neutral, high-key studio background. The lighting is soft but well-defined, capturing every detail of the uniform and facial features in a corporate style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhHBuz8naStQz6RUUOd30NE76_zeK-jHXiamQcB_5sbVLusWR8RuQJ78wOSgBKAAXN1gMZ7j4dhlv9iTTjHdY2h2uuHvPGLZ5vvUojbqAB31UM8JWSI-CHfki0ONTnQaDwHENo1FUYN4-ig82p1jDDqD2X86e2nBz5OTJoqh5gf-AQ5_-0of48ghYou1OssZXfyw10epU0cP7rUMFJ866oj-gOvRHaut0egXo9KUXvzXXLqyTnRwaQgFeLnuYfgoV8r6uuUejybQU"/>
+</div>
+<div class="flex-1 text-center md:text-left space-y-md w-full">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-md">
+<div>
+<div class="flex items-center justify-center md:justify-start gap-md mb-xs">
+<h3 class="text-headline-md font-headline-md text-primary">Carlos Alberto Ruiz Martínez</h3>
+<span class="bg-[#dcfce7] text-[#166534] px-sm py-xs rounded-lg text-label-sm font-label-sm">Activo</span>
+</div>
+<p class="text-title-lg font-title-lg text-on-surface-variant">Guardia de Seguridad</p>
+</div>
+<button class="bg-primary text-on-primary px-lg py-md rounded-lg flex items-center space-x-sm hover:opacity-90 transition-all active:scale-95">
+<span class="text-label-md font-label-md">Acciones</span>
+<span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span>
+</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-lg pt-md border-t border-outline-variant">
+<div>
+<p class="text-label-sm font-label-sm text-outline uppercase tracking-wider">ID Empleado</p>
+<p class="text-body-md font-body-md font-semibold text-primary">EMP-1287</p>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Fecha de ingreso</p>
+<p class="text-body-md font-body-md font-semibold text-primary">02/01/2022</p>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Antigüedad</p>
+<p class="text-body-md font-body-md font-semibold text-primary">2 años, 4 meses</p>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Supervisor</p>
+<p class="text-body-md font-body-md font-semibold text-secondary">Luis Fernando Gómez</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Document Grid -->
+<div>
+<div class="flex items-center justify-between mb-lg">
+<h4 class="text-title-lg font-title-lg text-primary">Documentos del expediente</h4>
+<p class="text-label-md font-label-md text-outline">8 documentos cargados</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-lg">
+<!-- Doc Card 1 -->
+<div class="profile-card p-lg group hover:border-primary transition-all cursor-pointer">
+<div class="flex items-start justify-between mb-md">
+<div class="w-10 h-10 bg-surface-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">badge</span>
+</div>
+<span class="bg-error-container text-on-error-container text-label-sm font-label-sm px-xs py-[2px] rounded">PDF</span>
+</div>
+<h5 class="text-body-md font-body-md font-semibold text-primary mb-xs">INE</h5>
+<p class="text-label-sm font-label-sm text-outline">Identificación Oficial</p>
+<p class="mt-md text-label-sm font-label-sm text-outline-variant">Cargado: 02/01/2022</p>
+</div>
+<!-- Doc Card 2 -->
+<div class="profile-card p-lg group hover:border-primary transition-all cursor-pointer">
+<div class="flex items-start justify-between mb-md">
+<div class="w-10 h-10 bg-surface-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">fingerprint</span>
+</div>
+<span class="bg-error-container text-on-error-container text-label-sm font-label-sm px-xs py-[2px] rounded">PDF</span>
+</div>
+<h5 class="text-body-md font-body-md font-semibold text-primary mb-xs">CURP</h5>
+<p class="text-label-sm font-label-sm text-outline">Documento Oficial</p>
+<p class="mt-md text-label-sm font-label-sm text-outline-variant">Cargado: 02/01/2022</p>
+</div>
+<!-- Doc Card 3 -->
+<div class="profile-card p-lg group hover:border-primary transition-all cursor-pointer">
+<div class="flex items-start justify-between mb-md">
+<div class="w-10 h-10 bg-surface-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">description</span>
+</div>
+<span class="bg-error-container text-on-error-container text-label-sm font-label-sm px-xs py-[2px] rounded">PDF</span>
+</div>
+<h5 class="text-body-md font-body-md font-semibold text-primary mb-xs">RFC</h5>
+<p class="text-label-sm font-label-sm text-outline">Documento Fiscal</p>
+<p class="mt-md text-label-sm font-label-sm text-outline-variant">Cargado: 02/01/2022</p>
+</div>
+<!-- Doc Card 4 -->
+<div class="profile-card p-lg group hover:border-primary transition-all cursor-pointer">
+<div class="flex items-start justify-between mb-md">
+<div class="w-10 h-10 bg-surface-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">medical_information</span>
+</div>
+<span class="bg-error-container text-on-error-container text-label-sm font-label-sm px-xs py-[2px] rounded">PDF</span>
+</div>
+<h5 class="text-body-md font-body-md font-semibold text-primary mb-xs">NSS</h5>
+<p class="text-label-sm font-label-sm text-outline">Seguro Social</p>
+<p class="mt-md text-label-sm font-label-sm text-outline-variant">Cargado: 02/01/2022</p>
+</div>
+<!-- Doc Card 5 -->
+<div class="profile-card p-lg group hover:border-primary transition-all cursor-pointer">
+<div class="flex items-start justify-between mb-md">
+<div class="w-10 h-10 bg-surface-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">home</span>
+</div>
+<span class="bg-error-container text-on-error-container text-label-sm font-label-sm px-xs py-[2px] rounded">PDF</span>
+</div>
+<h5 class="text-body-md font-body-md font-semibold text-primary mb-xs">Comprobante Domicilio</h5>
+<p class="text-label-sm font-label-sm text-outline">Recibo de Luz</p>
+<p class="mt-md text-label-sm font-label-sm text-outline-variant">Cargado: 02/01/2022</p>
+</div>
+<!-- Doc Card 6 -->
+<div class="profile-card p-lg group hover:border-primary transition-all cursor-pointer">
+<div class="flex items-start justify-between mb-md">
+<div class="w-10 h-10 bg-surface-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">history_edu</span>
+</div>
+<span class="bg-error-container text-on-error-container text-label-sm font-label-sm px-xs py-[2px] rounded">PDF</span>
+</div>
+<h5 class="text-body-md font-body-md font-semibold text-primary mb-xs">Contrato Laboral</h5>
+<p class="text-label-sm font-label-sm text-outline">Contrato</p>
+<p class="mt-md text-label-sm font-label-sm text-outline-variant">Cargado: 02/01/2022</p>
+</div>
+<!-- Doc Card 7 -->
+<div class="profile-card p-lg group hover:border-primary transition-all cursor-pointer">
+<div class="flex items-start justify-between mb-md">
+<div class="w-10 h-10 bg-surface-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">policy</span>
+</div>
+<span class="bg-error-container text-on-error-container text-label-sm font-label-sm px-xs py-[2px] rounded">PDF</span>
+</div>
+<h5 class="text-body-md font-body-md font-semibold text-primary mb-xs">Carta No Antecedentes</h5>
+<p class="text-label-sm font-label-sm text-outline">Documento Penal</p>
+<p class="mt-md text-label-sm font-label-sm text-outline-variant">Cargado: 02/01/2022</p>
+</div>
+<!-- Upload Card -->
+<div class="border-2 border-dashed border-outline-variant rounded-lg p-lg flex flex-col items-center justify-center text-center hover:bg-surface-container transition-colors cursor-pointer group">
+<div class="w-12 h-12 bg-surface-container rounded-full flex items-center justify-center mb-md group-hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-outline group-hover:text-primary">upload</span>
+</div>
+<h5 class="text-body-md font-body-md font-semibold text-primary">Subir Documento</h5>
+<p class="text-label-sm font-label-sm text-outline">Arrastra o selecciona</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-primary flex justify-around items-center px-4 pb-4 pt-2 z-50 border-t border-on-primary-fixed-variant shadow-lg">
+<div class="flex flex-col items-center justify-center text-primary-fixed-dim opacity-70">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-sm font-label-sm">Inicio</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl px-4 py-1 scale-90">
+<span class="material-symbols-outlined">group</span>
+<span class="text-label-sm font-label-sm">Empleados</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary-fixed-dim opacity-70">
+<span class="material-symbols-outlined">folder_shared</span>
+<span class="text-label-sm font-label-sm">Expedientes</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary-fixed-dim opacity-70">
+<span class="material-symbols-outlined">more_horiz</span>
+<span class="text-label-sm font-label-sm">Más</span>
+</div>
+</nav>
+<script>
+        // Simple interaction for document cards
+        document.querySelectorAll('.profile-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-2px)';
+                card.style.transition = 'transform 0.2s ease-out';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Tab switching logic (Visual only)
+        const tabs = document.querySelectorAll('button.text-label-md');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => {
+                    t.classList.remove('text-primary', 'border-b-2', 'border-primary');
+                    t.classList.add('text-on-surface-variant');
+                });
+                tab.classList.remove('text-on-surface-variant');
+                tab.classList.add('text-primary', 'border-b-2', 'border-primary');
+            });
+        });
+    </script>
+</body></html>
