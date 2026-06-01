@@ -6,7 +6,7 @@
     { terms: ["contratos", "firma", "firmar"], href: "/firma/" },
     { terms: ["incidencias", "incapacidades", "vacaciones", "actas administrativas", "ver detalles", "ver reportes", "reporte"], href: "/vacaciones/" },
     { terms: ["configuracion", "configuración"], href: "/dashboard/" },
-    { terms: ["privacidad", "terminos", "términos", "soporte", "olvidaste"], href: "/login/" }
+    { terms: ["privacidad", "terminos", "términos", "soporte", "olvidaste"], href: "/dashboard/" }
   ];
 
   function normalize(value) {
