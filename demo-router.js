@@ -59,38 +59,92 @@
       })
       .join("");
 
+    const installButton = document.createElement("button");
+    installButton.id = "demo-install";
+    installButton.type = "button";
+    installButton.hidden = true;
+    installButton.textContent = "Instalar app";
+
     const style = document.createElement("style");
     style.textContent = `
+      :root {
+        color-scheme: light;
+        --demo-nav-height: 66px;
+        --demo-safe-bottom: env(safe-area-inset-bottom, 0px);
+      }
+
+      html {
+        min-height: 100%;
+        background: #f7f9fb;
+        -webkit-text-size-adjust: 100%;
+      }
+
+      body {
+        min-height: 100dvh;
+        padding-bottom: calc(var(--demo-nav-height) + var(--demo-safe-bottom) + 12px);
+        overscroll-behavior-y: none;
+      }
+
+      button,
+      a,
+      input,
+      textarea,
+      select {
+        -webkit-tap-highlight-color: transparent;
+      }
+
       #demo-nav {
         position: fixed;
-        left: 50%;
-        bottom: 14px;
+        left: 10px;
+        right: 10px;
+        bottom: calc(10px + var(--demo-safe-bottom));
         z-index: 99999;
-        display: flex;
-        max-width: calc(100vw - 24px);
-        transform: translateX(-50%);
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
         gap: 6px;
         padding: 8px;
         border: 1px solid rgba(186, 199, 228, 0.35);
-        border-radius: 14px;
-        background: rgba(0, 3, 12, 0.88);
+        border-radius: 16px;
+        background: rgba(0, 3, 12, 0.92);
         box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
         backdrop-filter: blur(14px);
-        overflow-x: auto;
       }
 
       #demo-nav a {
-        flex: 0 0 auto;
-        min-height: 38px;
+        min-height: 42px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 8px;
+        border: 0;
+        border-radius: 10px;
+        background: transparent;
+        color: #d7e3ff;
+        font: 700 12px/1 Inter, Arial, sans-serif;
+        text-decoration: none;
+        white-space: nowrap;
+      }
+
+      #demo-install {
+        position: fixed;
+        right: 14px;
+        bottom: calc(var(--demo-nav-height) + var(--demo-safe-bottom) + 18px);
+        z-index: 99999;
+        min-height: 42px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
         padding: 0 14px;
+        border: 0;
         border-radius: 10px;
-        color: #d7e3ff;
-        font: 700 13px/1 Inter, Arial, sans-serif;
-        text-decoration: none;
-        white-space: nowrap;
+        background: #80abfe;
+        color: #003d85;
+        font: 700 12px/1 Inter, Arial, sans-serif;
+        box-shadow: 0 12px 30px rgba(0, 3, 12, 0.26);
+      }
+
+      #demo-install[hidden] {
+        display: none;
       }
 
       #demo-nav a[aria-current="page"] {
@@ -98,19 +152,114 @@
         color: #003d85;
       }
 
+      @media (max-width: 767px) {
+        #demo-install {
+          display: none !important;
+        }
+      }
+
       @media (min-width: 768px) {
+        body {
+          padding-bottom: 0;
+        }
+
         #demo-nav {
           top: 14px;
           right: 18px;
           bottom: auto;
           left: auto;
-          transform: none;
+          display: flex;
+          width: auto;
+          max-width: calc(100vw - 320px);
+          border-radius: 14px;
+        }
+
+        #demo-nav a {
+          min-width: 92px;
+          min-height: 38px;
+          padding: 0 14px;
+          font-size: 13px;
+        }
+
+        #demo-install {
+          top: 68px;
+          right: 24px;
+          bottom: auto;
+          min-height: 38px;
+          font-size: 13px;
+        }
+      }
+
+      @media (min-width: 1200px) {
+        main,
+        section {
+          scroll-margin-top: 84px;
         }
       }
     `;
 
     document.head.appendChild(style);
     document.body.appendChild(nav);
+    document.body.appendChild(installButton);
+  }
+
+  function injectPwaMeta() {
+    const metaTags = [
+      ["theme-color", "#101d33"],
+      ["apple-mobile-web-app-capable", "yes"],
+      ["apple-mobile-web-app-status-bar-style", "black-translucent"],
+      ["apple-mobile-web-app-title", "Human Capital"],
+      ["mobile-web-app-capable", "yes"]
+    ];
+
+    metaTags.forEach(([name, content]) => {
+      if (document.querySelector(`meta[name="${name}"]`)) return;
+      const meta = document.createElement("meta");
+      meta.name = name;
+      meta.content = content;
+      document.head.appendChild(meta);
+    });
+
+    const links = [
+      ["manifest", "/manifest.webmanifest"],
+      ["icon", "/favicon.svg"],
+      ["apple-touch-icon", "/favicon.svg"]
+    ];
+
+    links.forEach(([rel, href]) => {
+      if (document.querySelector(`link[rel="${rel}"]`)) return;
+      const link = document.createElement("link");
+      link.rel = rel;
+      link.href = href;
+      document.head.appendChild(link);
+    });
+  }
+
+  function registerServiceWorker() {
+    if (!("serviceWorker" in navigator)) return;
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("/sw.js").catch(() => {});
+    });
+  }
+
+  function wireInstallPrompt() {
+    let deferredPrompt = null;
+    const installButton = document.getElementById("demo-install");
+    if (!installButton) return;
+
+    window.addEventListener("beforeinstallprompt", (event) => {
+      event.preventDefault();
+      deferredPrompt = event;
+      installButton.hidden = false;
+    });
+
+    installButton.addEventListener("click", async () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      await deferredPrompt.userChoice;
+      deferredPrompt = null;
+      installButton.hidden = true;
+    });
   }
 
   function wireLinks() {
@@ -125,8 +274,11 @@
     window.location.assign(href);
   }
 
+  injectPwaMeta();
+  registerServiceWorker();
   wireLinks();
   injectDemoNav();
+  wireInstallPrompt();
 
   const loginForm = document.getElementById("loginForm");
   if (loginForm) {

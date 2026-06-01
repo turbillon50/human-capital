@@ -1,0 +1,42 @@
+{
+  "name": "Human Capital San Antonio",
+  "short_name": "Human Capital",
+  "description": "Demo PWA para gestion operativa de capital humano.",
+  "start_url": "/dashboard/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f7f9fb",
+  "theme_color": "#101d33",
+  "categories": ["business", "productivity"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Dashboard",
+      "short_name": "Dashboard",
+      "url": "/dashboard/"
+    },
+    {
+      "name": "Empleados",
+      "short_name": "Empleados",
+      "url": "/perfil/"
+    },
+    {
+      "name": "Expediente",
+      "short_name": "Expediente",
+      "url": "/expediente/"
+    },
+    {
+      "name": "Firma",
+      "short_name": "Firma",
+      "url": "/firma/"
+    }
+  ]
+}
