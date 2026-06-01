@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Executive Dashboard - San Antonio Seguridad</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#bac7e4",
+                        "on-secondary-container": "#003d85",
+                        "secondary": "#2d5dab",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "tertiary-container": "#0d1e31",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e0e3e5",
+                        "secondary-container": "#80abfe",
+                        "inverse-surface": "#2d3133",
+                        "inverse-primary": "#bac7e4",
+                        "surface-tint": "#525f78",
+                        "on-primary-fixed-variant": "#3b475f",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#76869e",
+                        "tertiary": "#00030a",
+                        "surface-container-high": "#e6e8ea",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed": "#001a41",
+                        "on-primary-container": "#7985a0",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-secondary-fixed-variant": "#054491",
+                        "primary": "#00030c",
+                        "surface-dim": "#d8dadc",
+                        "on-surface-variant": "#45474d",
+                        "tertiary-fixed": "#d3e4fe",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "background": "#f7f9fb",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-bright": "#f7f9fb",
+                        "primary-container": "#101d33",
+                        "surface-container": "#eceef0",
+                        "surface-container-low": "#f2f4f6",
+                        "on-background": "#191c1e",
+                        "surface": "#f7f9fb",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "surface-variant": "#e0e3e5",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#d7e3ff",
+                        "outline-variant": "#c5c6cd",
+                        "secondary-fixed": "#d8e2ff",
+                        "on-primary-fixed": "#0e1b31",
+                        "outline": "#75777e",
+                        "on-surface": "#191c1e",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "container-max": "1440px",
+                        "gutter": "20px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-full w-[260px] bg-primary dark:bg-tertiary-container shadow-xl z-40 hidden md:flex flex-col py-lg overflow-y-auto">
+<div class="px-lg mb-xl">
+<h1 class="text-headline-md font-headline-md text-on-primary">SAN ANTONIO</h1>
+<p class="text-label-sm font-label-sm text-on-primary-container tracking-widest uppercase">Seguridad Privada</p>
+</div>
+<nav class="flex-1 px-sm space-y-1">
+<!-- Navigation Items Mapping -->
+<a class="flex items-center gap-md px-md py-md bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-r-full font-bold group transition-all scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-body-md font-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-md text-primary-fixed-dim dark:text-on-tertiary-fixed-variant hover:bg-on-primary-fixed-variant rounded-r-full transition-transform duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+<span class="text-body-md font-body-md">Empleados</span>
+</a>
+<a class="flex items-center gap-md px-md py-md text-primary-fixed-dim dark:text-on-tertiary-fixed-variant hover:bg-on-primary-fixed-variant rounded-r-full transition-transform duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="text-body-md font-body-md">Expedientes</span>
+</a>
+<a class="flex items-center gap-md px-md py-md text-primary-fixed-dim dark:text-on-tertiary-fixed-variant hover:bg-on-primary-fixed-variant rounded-r-full transition-transform duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="text-body-md font-body-md">Contratos</span>
+</a>
+<a class="flex items-center gap-md px-md py-md text-primary-fixed-dim dark:text-on-tertiary-fixed-variant hover:bg-on-primary-fixed-variant rounded-r-full transition-transform duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="report_problem">report_problem</span>
+<span class="text-body-md font-body-md">Incidencias</span>
+</a>
+<a class="flex items-center gap-md px-md py-md text-primary-fixed-dim dark:text-on-tertiary-fixed-variant hover:bg-on-primary-fixed-variant rounded-r-full transition-transform duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="medical_services">medical_services</span>
+<span class="text-body-md font-body-md">Incapacidades</span>
+</a>
+<a class="flex items-center gap-md px-md py-md text-primary-fixed-dim dark:text-on-tertiary-fixed-variant hover:bg-on-primary-fixed-variant rounded-r-full transition-transform duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="event">event</span>
+<span class="text-body-md font-body-md">Vacaciones</span>
+</a>
+<a class="flex items-center gap-md px-md py-md text-primary-fixed-dim dark:text-on-tertiary-fixed-variant hover:bg-on-primary-fixed-variant rounded-r-full transition-transform duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="gavel">gavel</span>
+<span class="text-body-md font-body-md">Actas Administrativas</span>
+</a>
+<div class="mt-xl pt-xl border-t border-on-primary-fixed-variant opacity-20"></div>
+<a class="flex items-center gap-md px-md py-md text-primary-fixed-dim dark:text-on-tertiary-fixed-variant hover:bg-on-primary-fixed-variant rounded-r-full transition-transform duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-body-md font-body-md">Configuración</span>
+</a>
+</nav>
+<div class="px-lg mt-auto pt-lg">
+<div class="flex items-center gap-md bg-on-primary-fixed-variant/20 p-md rounded-xl">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-primary-fixed border border-outline-variant">
+<img alt="Director General" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVk4x3R-Pd-Z5MxdQa4KWRAGMytrVrPurdNgUaqRktzseXhpKWNyHzpNX2SSLkOj0RbS6G_OSNNHNb2P8G0HRgHZddOJjHyBWr7CkEag1Pzd8hCmra0GBd7HrfRznXwKp5oJUsWZjf3ik0Ur-bkvQDHegVMOFskhiQqcUL_SQl4XDe5q35l4wgvNDxZ82rD53x43sHhYsULSQ3w3wS8l-x99jYX-wtN_TEB47Ca1K4RAk9P3LDxS5yGHP-H70iSmMXYq_2rsMesPM"/>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="text-label-md font-label-md text-on-primary truncate">Director General</p>
+<p class="text-label-sm font-label-sm text-primary-fixed-dim">Admin</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-[260px] min-h-screen pb-24 md:pb-lg">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-30 bg-surface dark:bg-primary-container border-b border-outline-variant dark:border-outline flex justify-between items-center w-full px-lg py-md h-16">
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary dark:text-inverse-primary md:hidden" data-icon="menu">menu</button>
+<h2 class="text-headline-md font-headline-md text-primary dark:text-inverse-primary">Dashboard</h2>
+</div>
+<div class="flex items-center gap-lg">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-high p-xs rounded-full transition-colors" data-icon="search">search</button>
+<div class="relative">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-high p-xs rounded-full transition-colors" data-icon="notifications">notifications</button>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full border-2 border-surface"></span>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant"></div>
+<div class="flex items-center gap-md">
+<span class="text-label-md font-label-md text-primary hidden sm:block">Director General</span>
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden border border-outline-variant">
+<img alt="Director Profile" class="w-full h-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAePKJe5Hvt3YxpLqHVmwUzDGbjQwll5DyLpNs0Z0zmcZyh-A87WunYYnEZJMWrSqO5KrfpmVExhiN7JwCSpjlcOP2WropLyD5wgmUBswMhgTOfoDtShmDyDxp37Su24SKJjB4NCOOGopZqysivUKTq0ZPJaBkY4X2gb3ijBHnmsXDj3KbB33kubt5L2mfDnDXEQLFcrv4cBaW2vPC9569oQ85ioIsLjWPXsTAxcO9Ho3LI0XvS2Y789o52exJ53D-UhTyhyxJxDN8"/>
+</div>
+</div>
+</div>
+</header>
+<section class="max-w-[1440px] mx-auto p-lg">
+<!-- Welcome Header -->
+<div class="mb-xl">
+<h3 class="text-display-lg font-display-lg text-primary mb-xs">Bienvenido, Director General</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">Resumen general de la gestión operativa del personal.</p>
+</div>
+<!-- KPI Row (The Dashboard Anchor) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-lg mb-xl">
+<!-- KPI: Active Employees -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg flex justify-between items-start transition-all hover:shadow-md">
+<div>
+<p class="text-label-md font-label-md text-on-surface-variant mb-xs">Empleados Activos</p>
+<h4 class="text-display-lg font-display-lg text-primary">128</h4>
+<div class="flex items-center gap-xs mt-xs text-secondary font-semibold">
+<span class="material-symbols-outlined text-[18px]" data-icon="trending_up">trending_up</span>
+<span class="text-label-sm font-label-sm">+5 este mes</span>
+</div>
+</div>
+<div class="bg-secondary-container/20 p-md rounded-lg">
+<span class="material-symbols-outlined text-secondary" data-icon="group">group</span>
+</div>
+</div>
+<!-- KPI: Disabilities -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg flex justify-between items-start transition-all hover:shadow-md">
+<div>
+<p class="text-label-md font-label-md text-on-surface-variant mb-xs">Incapacidades</p>
+<h4 class="text-display-lg font-display-lg text-primary">8</h4>
+<a class="text-label-sm font-label-sm text-secondary hover:underline mt-xs block" href="#">Ver detalles</a>
+</div>
+<div class="bg-error-container/20 p-md rounded-lg">
+<span class="material-symbols-outlined text-error" data-icon="medical_services">medical_services</span>
+</div>
+</div>
+<!-- KPI: Vacations -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg flex justify-between items-start transition-all hover:shadow-md">
+<div>
+<p class="text-label-md font-label-md text-on-surface-variant mb-xs">Vacaciones Pendientes</p>
+<h4 class="text-display-lg font-display-lg text-primary">15</h4>
+<p class="text-label-sm font-label-sm text-on-surface-variant mt-xs">Solicitudes activas</p>
+</div>
+<div class="bg-primary-fixed/30 p-md rounded-lg">
+<span class="material-symbols-outlined text-on-primary-fixed" data-icon="flight_takeoff">flight_takeoff</span>
+</div>
+</div>
+<!-- KPI: Incidents -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg flex justify-between items-start transition-all hover:shadow-md">
+<div>
+<p class="text-label-md font-label-md text-on-surface-variant mb-xs">Incidencias del Mes</p>
+<h4 class="text-display-lg font-display-lg text-primary">23</h4>
+<a class="text-label-sm font-label-sm text-secondary hover:underline mt-xs block" href="#">Ver reportes</a>
+</div>
+<div class="bg-on-secondary-fixed-variant/10 p-md rounded-lg">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant" data-icon="report_problem">report_problem</span>
+</div>
+</div>
+</div>
+<!-- Bento Content Grid -->
+<div class="bento-grid">
+<!-- Main Activity: Upcoming Contracts -->
+<div class="col-span-12 lg:col-span-4 bg-white border border-outline-variant rounded-xl flex flex-col">
+<div class="px-lg py-md border-b border-outline-variant flex justify-between items-center">
+<h5 class="text-title-lg font-title-lg text-primary">Contratos por vencer</h5>
+<span class="bg-error-container text-on-error-container px-sm py-xs rounded-full text-label-sm font-label-sm">7 próximos</span>
+</div>
+<div class="p-lg space-y-md flex-1">
+<div class="flex items-center justify-between p-sm hover:bg-surface-container-low transition-colors rounded-lg cursor-pointer">
+<div>
+<p class="text-body-md font-semibold text-primary">Juan Pérez López</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase">Guardia</p>
+</div>
+<span class="text-label-md font-label-md text-primary">15/05/2024</span>
+</div>
+<div class="flex items-center justify-between p-sm hover:bg-surface-container-low transition-colors rounded-lg cursor-pointer">
+<div>
+<p class="text-body-md font-semibold text-primary">María González Martínez</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase">Supervisora</p>
+</div>
+<span class="text-label-md font-label-md text-primary">22/05/2024</span>
+</div>
+<div class="flex items-center justify-between p-sm hover:bg-surface-container-low transition-colors rounded-lg cursor-pointer">
+<div>
+<p class="text-body-md font-semibold text-primary">Carlos Ramírez Sánchez</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase">Guardia</p>
+</div>
+<span class="text-label-md font-label-md text-primary">28/05/2024</span>
+</div>
+</div>
+<div class="px-lg py-md border-t border-outline-variant">
+<button class="text-secondary font-semibold text-label-md hover:underline flex items-center gap-xs">
+                            Ver todos los contratos
+                            <span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- High Priority: Recent Incidents -->
+<div class="col-span-12 lg:col-span-4 bg-white border border-outline-variant rounded-xl flex flex-col">
+<div class="px-lg py-md border-b border-outline-variant flex justify-between items-center">
+<h5 class="text-title-lg font-title-lg text-primary">Incidencias recientes</h5>
+<button class="text-secondary text-label-md font-semibold hover:underline">Ver todas</button>
+</div>
+<div class="p-lg space-y-lg flex-1">
+<div class="flex gap-md">
+<div class="mt-1 w-2 h-2 rounded-full bg-amber-500 shrink-0 shadow-[0_0_8px_rgba(245,158,11,0.5)]"></div>
+<div>
+<p class="text-body-md font-semibold text-primary">Retardo</p>
+<p class="text-label-md font-label-md text-on-surface-variant">Guardia - Carlos Ruiz</p>
+<p class="text-label-sm font-label-sm text-outline mt-xs">Hoy, 08:15 AM</p>
+</div>
+</div>
+<div class="flex gap-md">
+<div class="mt-1 w-2 h-2 rounded-full bg-error shrink-0 shadow-[0_0_8px_rgba(186,26,26,0.5)]"></div>
+<div>
+<p class="text-body-md font-semibold text-primary">Falta</p>
+<p class="text-label-md font-label-md text-on-surface-variant">Guardia - Pedro Sánchez</p>
+<p class="text-label-sm font-label-sm text-outline mt-xs">Ayer, 09:00 AM</p>
+</div>
+</div>
+<div class="flex gap-md">
+<div class="mt-1 w-2 h-2 rounded-full bg-error shrink-0 shadow-[0_0_8px_rgba(186,26,26,0.5)]"></div>
+<div>
+<p class="text-body-md font-semibold text-primary">Acta Administrativa</p>
+<p class="text-label-md font-label-md text-on-surface-variant">Guardia - José Martínez</p>
+<p class="text-label-sm font-label-sm text-outline mt-xs">15 May, 04:30 PM</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Culture: Birthdays -->
+<div class="col-span-12 lg:col-span-4 bg-white border border-outline-variant rounded-xl flex flex-col">
+<div class="px-lg py-md border-b border-outline-variant flex justify-between items-center">
+<h5 class="text-title-lg font-title-lg text-primary">Cumpleaños del mes</h5>
+<button class="text-secondary text-label-md font-semibold hover:underline">Ver todos</button>
+</div>
+<div class="p-lg space-y-lg flex-1">
+<div class="flex items-center gap-md">
+<img alt="Ana Laura Morales" class="w-12 h-12 rounded-full bg-surface-container-high border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1KhU0QW-zwOzlp1Md4LOm7gnnpybDPnCnui-p1Q8T2zRr9vu_aL5M30pBhVkjftnt-0wIh89v2TKDoNwxn0b4tg2UoHdpzRO8PfRbwkwC68Yph5ZQaZv-oxO2-Vs_mXYO9oy9qFTpL65yfXe--c3deA4tatXEklw3cbJpxolVEtwiMhG6vN0R8heQCIYi2ITzK_bH0pRjNIgad4z578Yjv_O6bhVkVHLiW8k1tgkO47VlIeFK25D7XjZ6-vAsTh6DMumMQrU-t9w"/>
+<div class="flex-1">
+<p class="text-body-md font-semibold text-primary">Ana Laura Morales</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Supervisora</p>
+</div>
+<span class="text-label-md font-label-md text-secondary-fixed-dim bg-secondary/10 px-sm py-xs rounded">17 May</span>
+</div>
+<div class="flex items-center gap-md">
+<img alt="Jorge Hernández" class="w-12 h-12 rounded-full bg-surface-container-high border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeoqpPK6NxE3nm5L4bk8pOfcLXbZVWxOHTP5Y359Yv_mPCXr4xRhedAijrSkfPVjoqHE_-JRuN8JSClFFpYt3oidFn7KcRpzSAufPVbQ-nW9qHTiwJUzPDKVA_-tlxpU_V_X6_v5MSEfo0aNwqnzBiVo_5Oa0IKqsGwYGWd-Z5cebp6VYGbkULjUO784NczA1xOgKg2q-zKr6oTTDaMCFeXYrDI4WcthuhTw2u3N0NlPI6EhDAkTR9YjhHsjFMPx6ltIfeg8S15ws"/>
+<div class="flex-1">
+<p class="text-body-md font-semibold text-primary">Jorge Hernández</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Guardia</p>
+</div>
+<span class="text-label-md font-label-md text-secondary-fixed-dim bg-secondary/10 px-sm py-xs rounded">21 May</span>
+</div>
+<div class="flex items-center gap-md">
+<img alt="Sandra Gómez" class="w-12 h-12 rounded-full bg-surface-container-high border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC33X50O-HWfHMYRbvETyyWYH0xhIiEJOawb9MjCfwepF2-6naZDme1AnEelxnFWH6vnWBfXiZrIHuezEoYcrSSiItB6UFMM8VPqCV9utaWWPZajuTaxv0lOsCIJuvvwXNFSe6xlG4mnXfeMmBJe_-yUQX1SwuUB-fqW_kS1VrdydUvJ2Sr-51Xb1HK2H4NEqRDDIOoESh3cHDRANghhMSxh16EGp-E3rWZNKkv5wPnbcNhZkiudwn8wFG9g6dSZaaOfQTKVMWHlxA"/>
+<div class="flex-1">
+<p class="text-body-md font-semibold text-primary">Sandra Gómez</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Guardia</p>
+</div>
+<span class="text-label-md font-label-md text-secondary-fixed-dim bg-secondary/10 px-sm py-xs rounded">28 May</span>
+</div>
+</div>
+</div>
+<!-- Extended Data: Staff Performance Map (Placeholder for Advanced Layout) -->
+<div class="col-span-12 bg-white border border-outline-variant rounded-xl overflow-hidden">
+<div class="px-lg py-md border-b border-outline-variant bg-surface-container-low">
+<h5 class="text-title-lg font-title-lg text-primary">Distribución de Personal por Zona</h5>
+</div>
+<div class="relative h-64 bg-surface-container-highest flex items-center justify-center">
+<div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: radial-gradient(#2d5dab 0.5px, transparent 0.5px); background-size: 16px 16px;"></div>
+<div class="z-10 text-center">
+<img alt="Map Location" class="w-32 h-32 opacity-10 mx-auto" data-location="Mexico City" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCy_PcFxjPu1UXelmDdbtByKKyJUF7YVh9xJTOCsxnZ89grMmoj8osHUAFhf52a7KJLep17wxDyWBBNVU3T3YaD1illnu4jWJAj9Ae7wNESAXFdI7yzgaLeONurEL4OmRmvNT-U5Ma0eTyCz7607VGxJAODXmu_QN5LkpNoCai_2EqJYwFn8lHw0jd1yo3LwrCo0MqHyTMehpBmvWpMlCxYzo_lso1fM25EAna-FMUpVK-nmNlLG8GH3R23IQewpcmLDaSY3MLXXZ0"/>
+<p class="text-body-md font-body-md text-on-surface-variant italic">Mapa interactivo de activos en campo (Vista Administrativa)</p>
+<div class="mt-md flex justify-center gap-xl">
+<div class="text-center">
+<span class="text-title-lg font-title-lg text-secondary">42</span>
+<p class="text-label-sm font-label-sm uppercase">Norte</p>
+</div>
+<div class="text-center">
+<span class="text-title-lg font-title-lg text-secondary">58</span>
+<p class="text-label-sm font-label-sm uppercase">Centro</p>
+</div>
+<div class="text-center">
+<span class="text-title-lg font-title-lg text-secondary">28</span>
+<p class="text-label-sm font-label-sm uppercase">Sur</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-primary dark:bg-primary-container flex justify-around items-center px-4 pb-4 pt-2 shadow-lg z-50 border-t border-on-primary-fixed-variant">
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-xl px-4 py-1 active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-label-sm font-label-sm">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary-fixed-dim dark:text-on-tertiary-container opacity-70 hover:opacity-100 transition-opacity" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="text-label-sm font-label-sm">Empleados</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary-fixed-dim dark:text-on-tertiary-container opacity-70 hover:opacity-100 transition-opacity" href="#">
+<span class="material-symbols-outlined" data-icon="folder_shared">folder_shared</span>
+<span class="text-label-sm font-label-sm">Expedientes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary-fixed-dim dark:text-on-tertiary-container opacity-70 hover:opacity-100 transition-opacity" href="#">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+<span class="text-label-sm font-label-sm">Más</span>
+</a>
+</nav>
+<!-- Floating Action Button Contextual Logic (Dashboard context) -->
+<button class="fixed bottom-24 right-6 md:bottom-8 md:right-8 bg-secondary text-on-secondary p-lg rounded-xl shadow-xl hover:scale-105 transition-transform active:scale-95 flex items-center gap-md z-40">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+<span class="text-label-md font-label-md hidden md:inline">NUEVO REPORTE</span>
+</button>
+<script>
+        // Micro-interactions for Dashboard
+        document.querySelectorAll('.bg-white').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-2px)';
+                card.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1)';
+                card.style.transition = 'all 0.3s ease';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+                card.style.boxShadow = 'none';
+            });
+        });
+
+        // Initialize Material Symbols weights where needed
+        document.querySelectorAll('[data-icon="trending_up"]').forEach(icon => {
+            icon.style.fontVariationSettings = "'FILL' 0, 'wght' 700";
+        });
+    </script>
+<script src="/demo-router.js"></script>
+</body></html>

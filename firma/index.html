@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Firma Digital - San Antonio Seguridad</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        @font-face {
+            font-family: 'SignatureScript';
+            src: url('https://fonts.gstatic.com/s/allura/v21/9o7LAj6y_CvpV4L_6u95.woff2') format('woff2');
+        }
+        .signature-font {
+            font-family: 'SignatureScript', cursive;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#bac7e4",
+                        "on-secondary-container": "#003d85",
+                        "secondary": "#2d5dab",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "tertiary-container": "#0d1e31",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e0e3e5",
+                        "secondary-container": "#80abfe",
+                        "inverse-surface": "#2d3133",
+                        "inverse-primary": "#bac7e4",
+                        "surface-tint": "#525f78",
+                        "on-primary-fixed-variant": "#3b475f",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#76869e",
+                        "tertiary": "#00030a",
+                        "surface-container-high": "#e6e8ea",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed": "#001a41",
+                        "on-primary-container": "#7985a0",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-secondary-fixed-variant": "#054491",
+                        "primary": "#00030c",
+                        "surface-dim": "#d8dadc",
+                        "on-surface-variant": "#45474d",
+                        "tertiary-fixed": "#d3e4fe",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "background": "#f7f9fb",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-bright": "#f7f9fb",
+                        "primary-container": "#101d33",
+                        "surface-container": "#eceef0",
+                        "surface-container-low": "#f2f4f6",
+                        "on-background": "#191c1e",
+                        "surface": "#f7f9fb",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "surface-variant": "#e0e3e5",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#d7e3ff",
+                        "outline-variant": "#c5c6cd",
+                        "secondary-fixed": "#d8e2ff",
+                        "on-primary-fixed": "#0e1b31",
+                        "outline": "#75777e",
+                        "on-surface": "#191c1e",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "container-max": "1440px",
+                        "gutter": "20px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col md:flex-row overflow-hidden">
+<!-- Navigation Drawer (Desktop Only) -->
+<aside class="hidden md:flex flex-col h-full py-lg bg-primary dark:bg-tertiary-container text-on-primary dark:text-on-tertiary-container shadow-xl w-[260px] flex-shrink-0 z-30">
+<div class="px-lg mb-xl">
+<h1 class="text-headline-md font-headline-md text-on-primary">SAN ANTONIO</h1>
+<p class="text-label-sm font-label-sm opacity-70 tracking-widest uppercase">Seguridad Privada</p>
+</div>
+<nav class="flex-1 space-y-1">
+<div class="px-md py-xs flex items-center gap-md text-primary-fixed-dim hover:bg-on-primary-fixed-variant hover:translate-x-1 transition-transform duration-200 cursor-pointer">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-body-md font-body-md">Dashboard</span>
+</div>
+<div class="px-md py-xs flex items-center gap-md text-primary-fixed-dim hover:bg-on-primary-fixed-variant hover:translate-x-1 transition-transform duration-200 cursor-pointer">
+<span class="material-symbols-outlined">group</span>
+<span class="text-body-md font-body-md">Empleados</span>
+</div>
+<div class="px-md py-xs flex items-center gap-md bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-r-full font-bold scale-[0.98]">
+<span class="material-symbols-outlined">description</span>
+<span class="text-body-md font-body-md">Expedientes</span>
+</div>
+<!-- More items omitted for focus on signature screen -->
+</nav>
+<div class="mt-auto px-lg border-t border-on-primary-fixed-variant pt-lg flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden">
+<img alt="Director General" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4myRcFWWhCbNgT2D2DeHpjxrfO5ogtucz6UgP1paXC2ssblPK0d7A_RVyiqtgIkqkSjRd4BR7xm-Ap2ACVS1H2VXsEguJ2qvILj2szOkUNzst_R2eEdo7rTSRpuhfUrZbl7cwgdekFh8jOAoE9s1g0nxhsf8-aUbeiUamjtPCsIhn9srbwnO27ibG8BNyNdwuHinj60aSZ_67lIewLvh-WJzChILnsjqFY5MDypBdIS_BM8hwrAbpq_h3mpAu4oUPxo1LmtNI1k0"/>
+</div>
+<div class="flex flex-col">
+<span class="text-label-md font-label-md text-on-primary">Director General</span>
+<span class="text-label-sm font-label-sm opacity-60">Admin</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col h-screen relative bg-surface-bright">
+<!-- Top App Bar -->
+<header class="bg-surface dark:bg-primary-container text-primary dark:text-inverse-primary border-b border-outline-variant dark:border-outline flex justify-between items-center w-full px-lg py-md z-20">
+<div class="flex items-center gap-md">
+<button class="md:hidden p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h2 class="text-headline-md font-headline-md">Firma de Documento</h2>
+</div>
+<div class="flex items-center gap-lg">
+<span class="material-symbols-outlined hidden md:block">search</span>
+<span class="material-symbols-outlined">notifications</span>
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">person</span>
+</div>
+</div>
+</header>
+<!-- Document Workflow Area -->
+<section class="flex-1 p-md md:p-xl overflow-y-auto flex flex-col md:flex-row gap-lg bg-surface-container-low">
+<!-- Document Preview (Left/Center) -->
+<div class="flex-1 bg-white border border-outline-variant rounded shadow-sm p-xl max-w-4xl mx-auto md:mx-0 overflow-hidden relative">
+<!-- Watermark -->
+<div class="absolute inset-0 pointer-events-none opacity-[0.03] flex items-center justify-center rotate-[-45deg] select-none">
+<span class="text-[120px] font-bold">CONFIDENCIAL</span>
+</div>
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-xl">
+<div>
+<h3 class="text-title-lg font-title-lg text-primary uppercase">Contrato Laboral</h3>
+<p class="text-label-md font-label-md text-outline">Ref: ACT-00829-2024</p>
+</div>
+<img alt="Logo" class="h-12 w-auto grayscale contrast-125" data-alt="A minimalist corporate security logo featuring a shield emblem and strong typography. The logo is rendered in a high-contrast black and white style, professional and authoritative, suitable for an enterprise resource planning software interface. The background is clean and clinical, emphasizing a digital operating system feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuArB0ZuoDJs4J-83f5w_7I-oHUV12VkxqIZUuyOFFyXBISgEdGoH1RXS0Z-uLm1-3NSyecCHV2yQzlivoj4WdXFBlfxOfCMOemQDCgU00gXM-BfSW9ozmp7gkShpFEmeOPeYOUN3KZ5OPIbUWl0Iwo4W88DaessKumRQZtpKat1DmCw0n68UIV7dcYL5ot31HIufuGZH0_C86WzJ8f5bsAh9Aw8lUwuguEdGsZ8X_cHzWumxRFN7k9HZHG-eujy2AzaSzsdmrb2hzA"/>
+</div>
+<div class="space-y-lg text-body-md font-body-md text-on-surface-variant leading-relaxed">
+<p>Por medio del presente documento, se establece la relación laboral entre <strong>SAN ANTONIO SEGURIDAD PRIVADA S.A. DE C.V.</strong>, en lo sucesivo "El Empleador", y el <strong>C. CARLOS ALBERTO RUIZ MARTÍNEZ</strong>, en lo sucesivo "El Trabajador".</p>
+<h4 class="font-bold text-primary">CLAÚSULA PRIMERA: OBJETO</h4>
+<p>El trabajador se compromete a desempeñar las funciones de <strong>Guardia de Seguridad Intramuros</strong> en las locaciones que la empresa designe, cumpliendo con los estándares de excelencia y los protocolos de seguridad establecidos en el manual de procedimientos internos.</p>
+<h4 class="font-bold text-primary">CLAÚSULA SEGUNDA: JORNADA Y REMUNERACIÓN</h4>
+<p>La jornada laboral será de 24x24 horas, con una remuneración quincenal base más bonos de puntualidad y asistencia. El trabajador acepta las políticas de confidencialidad y el uso obligatorio del equipo de protección personal.</p>
+<div class="py-xl border-y border-outline-variant my-lg">
+<p class="text-center italic text-body-sm italic">"Yo, Carlos Alberto Ruiz Martínez, declaro bajo protesta de decir verdad que he leído íntegramente este contrato y acepto cada una de sus partes voluntariamente."</p>
+</div>
+<p>Ambas partes firman en la Ciudad de México, a los 15 días del mes de mayo de 2024.</p>
+</div>
+<!-- Visual Signature Area (Placeholder) -->
+<div class="mt-xl pt-lg border-t-2 border-dashed border-outline-variant flex flex-col items-center justify-center min-h-[160px] bg-surface-container-lowest rounded-xl" id="visual-signature-display">
+<div class="text-outline text-label-md uppercase mb-sm">Espacio para Firma Digital</div>
+<div class="signature-font text-6xl text-primary opacity-0 transition-opacity duration-700" id="signature-placeholder">
+                            Carlos Ruiz
+                        </div>
+<div class="w-48 h-[1px] bg-primary mt-base"></div>
+<p class="text-label-sm font-label-sm text-outline mt-sm">CARLOS ALBERTO RUIZ MARTÍNEZ</p>
+</div>
+</div>
+</div>
+<!-- Signature Controls (Right Sidebar) -->
+<div class="w-full md:w-80 flex flex-shrink-0 flex-col gap-md">
+<div class="glass-panel rounded-xl p-lg shadow-lg">
+<h4 class="text-title-lg font-title-lg text-primary mb-md">Acciones Requeridas</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-lg">Por favor, verifique su identidad y proceda con la firma electrónica del contrato laboral.</p>
+<div class="space-y-md">
+<div class="p-md bg-white border border-outline rounded flex items-start gap-md">
+<span class="material-symbols-outlined text-secondary">verified_user</span>
+<div>
+<p class="text-label-md font-label-md text-primary">Identidad Validada</p>
+<p class="text-label-sm font-label-sm text-outline">ID: EMP-1287-MX</p>
+</div>
+</div>
+<!-- Interactive Signature Box -->
+<div class="group relative flex flex-col items-center justify-center border-2 border-primary border-dashed rounded-xl p-lg bg-surface hover:bg-white transition-all cursor-pointer" onclick="triggerSignature()">
+<span class="material-symbols-outlined text-outline group-hover:scale-110 transition-transform mb-sm">draw</span>
+<span class="text-label-md font-label-md text-primary uppercase">Firmar aquí</span>
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<button class="w-full py-md bg-primary text-on-primary font-bold rounded-lg opacity-50 cursor-not-allowed transition-all active:scale-95" disabled="" id="btn-firmar" onclick="processDocument()">
+                            Firmar Documento
+                        </button>
+<div class="text-center">
+<a class="text-body-sm font-body-sm text-error hover:underline" href="#">Rechazar y Notificar</a>
+</div>
+</div>
+</div>
+<!-- Audit Trail Card -->
+<div class="bg-surface-container rounded-xl p-md border border-outline-variant">
+<div class="flex items-center gap-sm mb-xs">
+<span class="material-symbols-outlined text-xs">gavel</span>
+<span class="text-label-md font-label-md text-primary">Bitácora de Seguridad</span>
+</div>
+<ul class="text-[10px] font-mono text-outline space-y-xs">
+<li>[11:05:22] - Documento generado por RRHH</li>
+<li>[11:15:45] - Acceso registrado desde IP 192.168.1.45</li>
+<li>[11:16:10] - Identidad biométrica confirmada</li>
+<li class="hidden text-secondary" id="audit-signature-time">[PENDIENTE] - Firma electrónica generada</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Bottom Nav (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-4 pt-2 bg-primary text-on-primary shadow-lg z-50">
+<div class="flex flex-col items-center justify-center text-primary-fixed-dim opacity-70">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-sm font-label-sm">Inicio</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary-fixed-dim opacity-70">
+<span class="material-symbols-outlined">group</span>
+<span class="text-label-sm font-label-sm">Empleados</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl px-4 py-1 scale-90">
+<span class="material-symbols-outlined">folder_shared</span>
+<span class="text-label-sm font-label-sm">Expedientes</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary-fixed-dim opacity-70">
+<span class="material-symbols-outlined">more_horiz</span>
+<span class="text-label-sm font-label-sm">Más</span>
+</div>
+</nav>
+</main>
+<!-- Success Modal -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center bg-primary/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300" id="success-modal">
+<div class="bg-white rounded-xl p-xl shadow-2xl max-w-sm w-full text-center scale-90 transition-transform duration-300 transform" id="modal-content">
+<div class="w-20 h-20 bg-secondary-container rounded-full flex items-center justify-center mx-auto mb-lg text-on-secondary-container">
+<span class="material-symbols-outlined text-4xl">check_circle</span>
+</div>
+<h3 class="text-headline-md font-headline-md mb-sm">Documento Firmado</h3>
+<p class="text-body-md text-on-surface-variant mb-xl">La firma ha sido incrustada exitosamente con sello de tiempo legal.</p>
+<button class="w-full py-md bg-secondary text-on-secondary font-bold rounded-lg" onclick="location.reload()">Regresar al Dashboard</button>
+</div>
+</div>
+<script>
+        function triggerSignature() {
+            const placeholder = document.getElementById('signature-placeholder');
+            const btn = document.getElementById('btn-firmar');
+            const audit = document.getElementById('audit-signature-time');
+            
+            placeholder.classList.remove('opacity-0');
+            placeholder.classList.add('opacity-100');
+            
+            btn.disabled = false;
+            btn.classList.remove('opacity-50', 'cursor-not-allowed');
+            btn.classList.add('hover:bg-on-primary-fixed-variant', 'shadow-md');
+            
+            const now = new Date();
+            audit.textContent = `[${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}] - Firma electrónica generada`;
+            audit.classList.remove('hidden');
+        }
+
+        function processDocument() {
+            const modal = document.getElementById('success-modal');
+            const content = document.getElementById('modal-content');
+            
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100');
+            content.classList.remove('scale-90');
+            content.classList.add('scale-100');
+        }
+
+        // Atmospheric effect: Subtle mouse-follow on the glass panel
+        document.addEventListener('mousemove', (e) => {
+            const panels = document.querySelectorAll('.glass-panel');
+            panels.forEach(panel => {
+                const rect = panel.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                panel.style.setProperty('--mouse-x', `${x}px`);
+                panel.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+<script src="/demo-router.js"></script>
+</body></html>

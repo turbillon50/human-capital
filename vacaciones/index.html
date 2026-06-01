@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gestión de Vacaciones e Incidencias - San Antonio Seguridad</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#bac7e4",
+                        "on-secondary-container": "#003d85",
+                        "secondary": "#2d5dab",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "tertiary-container": "#0d1e31",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e0e3e5",
+                        "secondary-container": "#80abfe",
+                        "inverse-surface": "#2d3133",
+                        "inverse-primary": "#bac7e4",
+                        "surface-tint": "#525f78",
+                        "on-primary-fixed-variant": "#3b475f",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#76869e",
+                        "tertiary": "#00030a",
+                        "surface-container-high": "#e6e8ea",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed": "#001a41",
+                        "on-primary-container": "#7985a0",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-secondary-fixed-variant": "#054491",
+                        "primary": "#00030c",
+                        "surface-dim": "#d8dadc",
+                        "on-surface-variant": "#45474d",
+                        "tertiary-fixed": "#d3e4fe",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "background": "#f7f9fb",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-bright": "#f7f9fb",
+                        "primary-container": "#101d33",
+                        "surface-container": "#eceef0",
+                        "surface-container-low": "#f2f4f6",
+                        "on-background": "#191c1e",
+                        "surface": "#f7f9fb",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "surface-variant": "#e0e3e5",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#d7e3ff",
+                        "outline-variant": "#c5c6cd",
+                        "secondary-fixed": "#d8e2ff",
+                        "on-primary-fixed": "#0e1b31",
+                        "outline": "#75777e",
+                        "on-surface": "#191c1e",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "container-max": "1440px",
+                        "gutter": "20px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-tab {
+            position: relative;
+        }
+        .active-tab::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #2d5dab;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col md:flex-row">
+<!-- Navigation Drawer (Sidebar) -->
+<aside class="hidden md:flex flex-col h-full py-lg bg-primary dark:bg-tertiary-container docked full-height left-0 w-[260px] shadow-xl fixed">
+<div class="px-lg mb-xl flex flex-col items-start">
+<div class="flex items-center gap-md mb-lg">
+<img class="w-12 h-12 rounded-lg" data-alt="Corporate logo for San Antonio Seguridad featuring a shield emblem in high-contrast navy and silver. The design is minimalist and professional, set against a dark, textured background that suggests security and authority. The logo uses clean, geometric lines for a modern ERP system feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0PcoLHnV0kYVrKiaw7zq7-jTdLEegg_2tpkIBd1rspbK8nTqvO9HR7gEvLhQI39svnQ79mE0dfmbhsE_-m-W9zVnGMUBItpcKlc4CxXH9TkUivxTSBvZl4gl2_fu78eALlJyF_2ps9RXXjnhdtiJjiWLbZX-O6I5kKp6IgSjILlaN4-ZOSdSSPTTcuu3CyMqEvGSpkGy4ZzvDd9xvK9Ai7evQXcqKPTmPcze93LlkigBP696OR0HMgDLB1toNQgFeQHtEFPi26zI"/>
+<div>
+<h1 class="text-headline-md font-headline-md text-on-primary">San Antonio</h1>
+<p class="text-label-sm font-label-sm text-primary-fixed-dim uppercase tracking-widest">Seguridad Privada</p>
+</div>
+</div>
+<div class="flex items-center gap-md p-md bg-on-primary-fixed-variant rounded-xl w-full">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden">
+<img alt="Director General" class="object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCM4yt4AAm0IxC5YBPoqBrdtB99jpgkdV8qev4n-m8sr_IkxyK9ouM4gKdudHm4C2At1WdOp1XyspfcwHfMmIdovC98AJF2W6KaBLZ6kvsaQEH4qUTJDFn0o17p18DfZ7RMHphW0b8X6_htq2skmGQTYHK1LguTCAIVDKoGq6jN6Hc2vHMp4eWz0FyefoAgHxs_Y85o671PsqyRt0eqooapd1hwI1yFGxnpsJl9XNe8MWmpDAEhLD57uzDzotYZmMWyv98wF_y7Z1g"/>
+</div>
+<div class="flex flex-col">
+<span class="text-label-md font-label-md text-on-primary">Director General</span>
+<span class="text-[10px] text-primary-fixed-dim">Admin</span>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-xs">
+<!-- Navigation links based on JSON mapping -->
+<a class="flex items-center gap-md px-lg py-md text-primary-fixed-dim dark:text-on-tertiary-fixed-variant hover:bg-on-primary-fixed-variant transition-transform duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-body-md font-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-lg py-md text-primary-fixed-dim dark:text-on-tertiary-fixed-variant hover:bg-on-primary-fixed-variant transition-transform duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">badge</span>
+<span class="text-body-md font-body-md">Empleados</span>
+</a>
+<a class="flex items-center gap-md px-lg py-md text-primary-fixed-dim dark:text-on-tertiary-fixed-variant hover:bg-on-primary-fixed-variant transition-transform duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-body-md font-body-md">Expedientes</span>
+</a>
+<a class="flex items-center gap-md px-lg py-md bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-r-full font-bold scale-[0.98]" href="#">
+<span class="material-symbols-outlined">event</span>
+<span class="text-body-md font-body-md">Vacaciones</span>
+</a>
+<a class="flex items-center gap-md px-lg py-md text-primary-fixed-dim dark:text-on-tertiary-fixed-variant hover:bg-on-primary-fixed-variant transition-transform duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">report_problem</span>
+<span class="text-body-md font-body-md">Incidencias</span>
+</a>
+<a class="flex items-center gap-md px-lg py-md text-primary-fixed-dim dark:text-on-tertiary-fixed-variant hover:bg-on-primary-fixed-variant transition-transform duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="text-body-md font-body-md">Contratos</span>
+</a>
+<a class="flex items-center gap-md px-lg py-md text-primary-fixed-dim dark:text-on-tertiary-fixed-variant hover:bg-on-primary-fixed-variant transition-transform duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-body-md font-body-md">Configuración</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-[260px] pb-24 md:pb-lg overflow-x-hidden">
+<!-- TopAppBar (Mobile & Web) -->
+<header class="bg-surface dark:bg-primary-container text-primary dark:text-inverse-primary border-b border-outline-variant dark:border-outline flex justify-between items-center w-full px-lg py-md sticky top-0 z-40">
+<div class="flex items-center gap-md">
+<button class="md:hidden">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h2 class="text-title-lg font-title-lg font-bold text-primary dark:text-inverse-primary">Vacaciones e Incidencias</h2>
+</div>
+<div class="flex items-center gap-lg">
+<button class="relative hover:bg-surface-container-high p-sm rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<div class="hidden md:block w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="Avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZZ1PeZ3_KlXlVvKt7OzFgNnvsdSDBpgmmYK8a3DgcIstC49ootQbDbyD0ErX-bja8vHT_M2ie-XfClFLnXMg5-Nncn4_ngQ6LksawEqKkzBZpXkGTWrIWpM8laTSie3QDSh4T7NgvbDNVXupjv87k1Nzs2DC0oHKoNKYHV2MrNACUT_zQe4RFYirdmKZjyChC-_lDXwVvcQ4YyjQP05BLgX-Znm7wJ22OB9nYwOK0LeH3X837pj97ucVNoURccRwfOtMegIHZ-Ho"/>
+</div>
+</div>
+</header>
+<div class="p-md md:p-lg max-w-7xl mx-auto">
+<!-- Hero Stats / Summary Cards (Asymmetric Grid) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg mb-xl">
+<div class="md:col-span-8 bg-surface-container-lowest border border-outline-variant p-lg rounded-xl">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-md mb-lg">
+<div>
+<h3 class="text-headline-md font-headline-md">Panel Operativo</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Gestiona tus solicitudes de descanso y reporta incidencias de campo.</p>
+</div>
+<!-- Toggle Switch -->
+<div class="inline-flex p-1 bg-surface-container rounded-lg border border-outline-variant">
+<button class="px-md py-sm text-label-md font-label-md bg-white rounded-md shadow-sm text-primary">Mis Solicitudes</button>
+<button class="px-md py-sm text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors">Calendario</button>
+</div>
+</div>
+<!-- Vacation Request List -->
+<div class="space-y-md">
+<h4 class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider mb-sm">Solicitudes Recientes</h4>
+<!-- List Item: Pending -->
+<div class="flex flex-col md:flex-row md:items-center justify-between p-md border border-outline-variant rounded-lg hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="flex items-start gap-md">
+<div class="bg-secondary-container/20 p-sm rounded-lg text-secondary">
+<span class="material-symbols-outlined">calendar_month</span>
+</div>
+<div>
+<span class="block text-body-md font-body-md font-semibold">15 - 20 Mayo, 2024</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">6 días • Solicitado el 10/05/2024</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-md md:mt-0 gap-xl">
+<span class="bg-amber-100 text-amber-800 text-label-sm font-label-sm px-3 py-1 rounded-full">Pendiente</span>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</div>
+<!-- List Item: Approved -->
+<div class="flex flex-col md:flex-row md:items-center justify-between p-md border border-outline-variant rounded-lg hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="flex items-start gap-md">
+<div class="bg-secondary-container/20 p-sm rounded-lg text-secondary">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+<div>
+<span class="block text-body-md font-body-md font-semibold">10 - 14 Junio, 2024</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">5 días • Solicitado el 08/05/2024</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-md md:mt-0 gap-xl">
+<span class="bg-emerald-100 text-emerald-800 text-label-sm font-label-sm px-3 py-1 rounded-full">Aprobado</span>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</div>
+<!-- List Item: Pending -->
+<div class="flex flex-col md:flex-row md:items-center justify-between p-md border border-outline-variant rounded-lg hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="flex items-start gap-md">
+<div class="bg-secondary-container/20 p-sm rounded-lg text-secondary">
+<span class="material-symbols-outlined">calendar_month</span>
+</div>
+<div>
+<span class="block text-body-md font-body-md font-semibold">22 - 27 Julio, 2024</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">6 días • Solicitado el 05/05/2024</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-md md:mt-0 gap-xl">
+<span class="bg-amber-100 text-amber-800 text-label-sm font-label-sm px-3 py-1 rounded-full">Pendiente</span>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Panel: Incident Form -->
+<div class="md:col-span-4 space-y-lg">
+<!-- Statistics Card -->
+<div class="bg-primary p-lg rounded-xl text-on-primary">
+<div class="flex items-center justify-between mb-md">
+<span class="text-label-md font-label-md opacity-70 uppercase">Saldo Vacacional</span>
+<span class="material-symbols-outlined opacity-70">info</span>
+</div>
+<div class="flex items-end gap-sm">
+<span class="text-display-lg font-display-lg">15</span>
+<span class="text-body-md mb-xs opacity-70">Días pendientes</span>
+</div>
+<div class="mt-lg pt-lg border-t border-on-primary/10">
+<div class="flex justify-between items-center text-label-sm">
+<span>Progreso Anual</span>
+<span>65%</span>
+</div>
+<div class="h-2 w-full bg-white/10 rounded-full mt-sm overflow-hidden">
+<div class="h-full bg-secondary-container w-[65%]"></div>
+</div>
+</div>
+</div>
+<!-- Incident Reporting Card -->
+<div class="bg-surface-container-lowest border border-outline-variant p-lg rounded-xl">
+<div class="flex items-center gap-md mb-lg">
+<div class="w-10 h-10 rounded-full bg-error-container flex items-center justify-center text-error">
+<span class="material-symbols-outlined">report</span>
+</div>
+<h3 class="text-title-lg font-title-lg">Reportar Incidencia</h3>
+</div>
+<form class="space-y-md">
+<div>
+<label class="block text-label-md font-label-md text-on-surface-variant mb-xs">Descripción del Suceso</label>
+<textarea class="w-full bg-surface border border-outline-variant rounded-lg text-body-sm focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all resize-none p-md" placeholder="Detalle lo ocurrido de forma breve y concisa..." rows="4"></textarea>
+</div>
+<div class="flex items-center justify-center w-full">
+<label class="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-outline-variant rounded-xl cursor-pointer hover:bg-surface-container-low transition-all">
+<div class="flex flex-col items-center justify-center pt-5 pb-6">
+<span class="material-symbols-outlined text-outline mb-sm">add_a_photo</span>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Subir evidencia fotográfica</p>
+</div>
+<input class="hidden" type="file"/>
+</label>
+</div>
+<button class="w-full bg-primary text-on-primary py-md rounded-lg font-label-md hover:opacity-90 active:scale-95 transition-all shadow-md" type="submit">
+                                Reportar Incidencia
+                            </button>
+</form>
+</div>
+</div>
+</div>
+<!-- Asymmetric Informational Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg relative overflow-hidden group">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-secondary mb-md">verified_user</span>
+<h4 class="text-title-lg font-bold mb-xs">Políticas de Empresa</h4>
+<p class="text-body-sm text-on-surface-variant">Consulta los lineamientos internos para la solicitud de permisos especiales y licencias.</p>
+<button class="mt-lg text-secondary font-label-md flex items-center gap-xs hover:gap-md transition-all">
+                            Leer manual <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<div class="absolute -right-8 -bottom-8 opacity-5 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[120px]">policy</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg relative overflow-hidden group">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-secondary mb-md">medical_services</span>
+<h4 class="text-title-lg font-bold mb-xs">Incapacidades</h4>
+<p class="text-body-sm text-on-surface-variant">Gestiona tus reportes médicos y certificados oficiales ante el IMSS de manera digital.</p>
+<button class="mt-lg text-secondary font-label-md flex items-center gap-xs hover:gap-md transition-all">
+                            Registrar alta <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<div class="absolute -right-8 -bottom-8 opacity-5 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[120px]">medication</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg relative overflow-hidden group">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-secondary mb-md">history</span>
+<h4 class="text-title-lg font-bold mb-xs">Histórico de Actas</h4>
+<p class="text-body-sm text-on-surface-variant">Revisa tu historial de incidencias y actas administrativas generadas en el sistema.</p>
+<button class="mt-lg text-secondary font-label-md flex items-center gap-xs hover:gap-md transition-all">
+                            Ver historial <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<div class="absolute -right-8 -bottom-8 opacity-5 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[120px]">gavel</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-primary dark:bg-primary-container text-on-primary dark:text-on-primary-container flex justify-around items-center px-4 pb-4 pt-2 shadow-lg z-50 border-t border-on-primary-fixed-variant">
+<a class="flex flex-col items-center justify-center text-primary-fixed-dim opacity-70 hover:opacity-100 transition-opacity" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-sm font-label-sm">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary-fixed-dim opacity-70 hover:opacity-100 transition-opacity" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-label-sm font-label-sm">Empleados</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-xl px-4 py-1 scale-90 transition-all" href="#">
+<span class="material-symbols-outlined">event</span>
+<span class="text-label-sm font-label-sm">Vacaciones</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary-fixed-dim opacity-70 hover:opacity-100 transition-opacity" href="#">
+<span class="material-symbols-outlined">more_horiz</span>
+<span class="text-label-sm font-label-sm">Más</span>
+</a>
+</nav>
+<!-- Floating Action Button (FAB) - Contextual for Mobile -->
+<button class="md:hidden fixed right-6 bottom-24 w-14 h-14 bg-secondary text-on-secondary rounded-full shadow-2xl flex items-center justify-center active:scale-95 transition-transform z-40">
+<span class="material-symbols-outlined text-[28px]">add</span>
+</button>
+<script>
+        // Simple Interaction logic
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('click', (e) => {
+                if(el.tagName === 'A') {
+                    // Prevent default for demo
+                    // e.preventDefault();
+                }
+            });
+        });
+
+        // Demo active state switching for toggle
+        const toggleButtons = document.querySelectorAll('.inline-flex button');
+        toggleButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                toggleButtons.forEach(b => {
+                    b.classList.remove('bg-white', 'shadow-sm', 'text-primary');
+                    b.classList.add('text-on-surface-variant');
+                });
+                btn.classList.add('bg-white', 'shadow-sm', 'text-primary');
+                btn.classList.remove('text-on-surface-variant');
+            });
+        });
+    </script>
+<script src="/demo-router.js"></script>
+</body></html>

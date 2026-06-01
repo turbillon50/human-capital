@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Iniciar Sesión - San Antonio Seguridad Privada</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#bac7e4",
+                        "on-secondary-container": "#003d85",
+                        "secondary": "#2d5dab",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "tertiary-container": "#0d1e31",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e0e3e5",
+                        "secondary-container": "#80abfe",
+                        "inverse-surface": "#2d3133",
+                        "inverse-primary": "#bac7e4",
+                        "surface-tint": "#525f78",
+                        "on-primary-fixed-variant": "#3b475f",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#76869e",
+                        "tertiary": "#00030a",
+                        "surface-container-high": "#e6e8ea",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed": "#001a41",
+                        "on-primary-container": "#7985a0",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-secondary-fixed-variant": "#054491",
+                        "primary": "#00030c",
+                        "surface-dim": "#d8dadc",
+                        "on-surface-variant": "#45474d",
+                        "tertiary-fixed": "#d3e4fe",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "background": "#f7f9fb",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-bright": "#f7f9fb",
+                        "primary-container": "#101d33",
+                        "surface-container": "#eceef0",
+                        "surface-container-low": "#f2f4f6",
+                        "on-background": "#191c1e",
+                        "surface": "#f7f9fb",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "surface-variant": "#e0e3e5",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#d7e3ff",
+                        "outline-variant": "#c5c6cd",
+                        "secondary-fixed": "#d8e2ff",
+                        "on-primary-fixed": "#0e1b31",
+                        "outline": "#75777e",
+                        "on-surface": "#191c1e",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "container-max": "1440px",
+                        "gutter": "20px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Particle effect background */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #00030c 0%, #101d33 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-primary-container min-h-screen flex items-center justify-center p-md">
+<!-- Background visual effect layer -->
+<div id="bg-canvas"></div>
+<main class="w-full max-w-[440px] flex flex-col items-center">
+<!-- Logo Section -->
+<div class="mb-xl flex flex-col items-center animate-fade-in">
+<div class="relative w-32 h-32 mb-lg">
+<img alt="San Antonio Seguridad Privada Logo" class="w-full h-full object-contain filter drop-shadow-[0_0_15px_rgba(186,199,228,0.3)]" data-alt="A premium, metallic security shield emblem for 'San Antonio Seguridad Privada'. The shield is rendered in brushed steel and deep navy blue with chrome highlights, reflecting a professional and high-authority aesthetic. The environment is a dark, cinematic space with subtle blue rim lighting, emphasizing durability, reliability, and corporate excellence in private security." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCS5hWzYsQdxmg8s5IORdr-6nvUQvE6DZ04Mlsvp6pGzzBoZCe5rGA4Ze9WqTJ9TGrO0u71fZa_XSbJrSTJLywf6cPgvIXl1MhvnXNkOJAhE06RbadrfBR6Kn5shrSdoznj0JxIuOHabIR8VI60AL9h4q6T8K_izsCq6Efxx-SxTQsV0xiZH8h4C6GKTGsJ84gTZywEJl4ITbAth0FZZnbGh0Py5JqN7I4V8OB6sQEe6clOOD1_OJZrczqiJ3ksSioi43SGFiwRHBo"/>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-primary mb-xs tracking-tight">Iniciar Sesión</h1>
+<p class="font-body-md text-body-md text-on-primary-container">Accede a tu panel de gestión operativa</p>
+</div>
+<!-- Login Card -->
+<div class="w-full bg-primary/40 backdrop-blur-xl border border-outline-variant/20 rounded-xl p-xl shadow-2xl">
+<form class="space-y-lg" id="loginForm">
+<!-- Email Field -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-primary-fixed-dim uppercase tracking-wider block" for="email">Correo Electrónico</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-md flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-primary-fixed-dim/50 group-focus-within:text-secondary-container transition-colors" data-icon="alternate_email">alternate_email</span>
+</div>
+<input class="block w-full bg-primary-container/50 border border-outline/30 rounded text-on-primary font-body-md text-body-md px-[44px] py-md focus:ring-2 focus:ring-secondary-container/20 focus:border-secondary-container transition-all placeholder:text-on-primary-container/40" id="email" name="email" placeholder="usuario@empresa.com" required="" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-primary-fixed-dim uppercase tracking-wider block" for="password">Contraseña</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-md flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-primary-fixed-dim/50 group-focus-within:text-secondary-container transition-colors" data-icon="lock">lock</span>
+</div>
+<input class="block w-full bg-primary-container/50 border border-outline/30 rounded text-on-primary font-body-md text-body-md px-[44px] py-md focus:ring-2 focus:ring-secondary-container/20 focus:border-secondary-container transition-all placeholder:text-on-primary-container/40" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+<button class="absolute inset-y-0 right-0 pr-md flex items-center text-on-primary-container/50 hover:text-on-primary transition-colors" onclick="togglePassword()" type="button">
+<span class="material-symbols-outlined" data-icon="visibility" id="pw-icon">visibility</span>
+</button>
+</div>
+</div>
+<!-- Utilities -->
+<div class="flex items-center justify-between pt-xs">
+<label class="flex items-center cursor-pointer group">
+<input class="w-4 h-4 rounded border-outline/30 bg-primary-container/50 text-secondary-container focus:ring-secondary-container focus:ring-offset-primary-container" type="checkbox"/>
+<span class="ml-sm font-label-md text-label-md text-on-primary-container group-hover:text-on-primary transition-colors">Recordarme</span>
+</label>
+<a class="font-label-md text-label-md text-secondary-container hover:text-on-secondary-container transition-colors decoration-secondary-container/30 underline underline-offset-4" href="#">
+                        ¿Olvidaste tu contraseña?
+                    </a>
+</div>
+<!-- Submit Button -->
+<button class="w-full bg-secondary-container hover:bg-secondary text-on-secondary-container hover:text-on-secondary font-label-md text-headline-md py-md rounded-xl transition-all duration-300 transform active:scale-[0.98] shadow-lg hover:shadow-secondary-container/20 flex items-center justify-center gap-sm" type="submit">
+                    Ingresar
+                    <span class="material-symbols-outlined" data-icon="login">login</span>
+</button>
+</form>
+</div>
+<!-- Footer -->
+<footer class="mt-xl text-center">
+<p class="font-label-sm text-label-sm text-on-primary-container opacity-60">
+                © 2024 San Antonio Seguridad Privada. Todos los derechos reservados.
+            </p>
+<div class="mt-md flex justify-center gap-lg">
+<a class="font-label-sm text-label-sm text-on-primary-container hover:text-on-primary transition-colors" href="#">Privacidad</a>
+<a class="font-label-sm text-label-sm text-on-primary-container hover:text-on-primary transition-colors" href="#">Términos</a>
+<a class="font-label-sm text-label-sm text-on-primary-container hover:text-on-primary transition-colors" href="#">Soporte</a>
+</div>
+</footer>
+</main>
+<script>
+        // Micro-interaction for password visibility
+        function togglePassword() {
+            const pwInput = document.getElementById('password');
+            const pwIcon = document.getElementById('pw-icon');
+            if (pwInput.type === 'password') {
+                pwInput.type = 'text';
+                pwIcon.textContent = 'visibility_off';
+            } else {
+                pwInput.type = 'password';
+                pwIcon.textContent = 'visibility';
+            }
+        }
+
+        // Form submission effect
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalContent = btn.innerHTML;
+            btn.innerHTML = '<span class="animate-spin material-symbols-outlined">sync</span> Cargando...';
+            btn.disabled = true;
+            
+            // Simulating API call
+            setTimeout(() => {
+                btn.innerHTML = originalContent;
+                btn.disabled = false;
+                alert('Iniciando sesión...');
+            }, 1500);
+        });
+
+        // Atmospheric background canvas effect
+        const canvas = document.createElement('canvas');
+        document.getElementById('bg-canvas').appendChild(canvas);
+        const ctx = canvas.getContext('2d');
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        window.onresize = resize;
+        resize();
+
+        const dots = [];
+        for (let i = 0; i < 40; i++) {
+            dots.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5,
+                size: Math.random() * 2
+            });
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'rgba(186, 199, 228, 0.15)';
+            
+            dots.forEach(dot => {
+                dot.x += dot.vx;
+                dot.y += dot.vy;
+
+                if (dot.x < 0 || dot.x > canvas.width) dot.vx *= -1;
+                if (dot.y < 0 || dot.y > canvas.height) dot.vy *= -1;
+
+                ctx.beginPath();
+                ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            requestAnimationFrame(draw);
+        }
+
+        draw();
+    </script>
+<script src="/demo-router.js"></script>
+</body></html>
