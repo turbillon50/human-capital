@@ -93,7 +93,4 @@ src/
 
 ## Liga del preview
 
-```
-<!-- Se actualiza con la URL del deploy de Vercel -->
-https://<deploy>.vercel.app
-```
+**Producción (pública):** https://human-capital-flax.vercel.app

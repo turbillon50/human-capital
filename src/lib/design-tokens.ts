@@ -91,5 +91,5 @@ export const brand = {
   tagline: "El sistema operativo de tu fuerza de seguridad",
   themeColor: "#101d33",
   backgroundColor: "#f7f9fb",
-  url: "https://san-antonio-hcm-demo.vercel.app",
+  url: "https://human-capital-flax.vercel.app",
 } as const;
