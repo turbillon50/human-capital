@@ -1,10 +1,10 @@
 (function () {
   const demoPages = [
-    { label: "Dashboard", href: "/dashboard/", aliases: ["dashboard", "inicio", "home"] },
-    { label: "Empleados", href: "/perfil/", aliases: ["empleados", "empleado", "perfil", "badge", "group"] },
-    { label: "Expediente", href: "/expediente/", aliases: ["expedientes", "expediente", "inventory_2", "folder_shared"] },
-    { label: "Vacaciones", href: "/vacaciones/", aliases: ["vacaciones", "incidencias", "incapacidades", "actas administrativas", "ver detalles", "ver reportes", "reporte", "nuevo reporte", "event", "report_problem", "medical_services", "gavel"] },
-    { label: "Firma", href: "/firma/", aliases: ["contratos", "contrato", "firma", "firmar", "description"] }
+    { label: "Inicio", desktopLabel: "Dashboard", href: "/dashboard/", aliases: ["dashboard", "inicio", "home"] },
+    { label: "Equipo", desktopLabel: "Empleados", href: "/perfil/", aliases: ["empleados", "empleado", "perfil", "badge", "group"] },
+    { label: "Exp.", desktopLabel: "Expediente", href: "/expediente/", aliases: ["expedientes", "expediente", "inventory_2", "folder_shared"] },
+    { label: "Ops", desktopLabel: "Vacaciones", href: "/vacaciones/", aliases: ["vacaciones", "incidencias", "incapacidades", "actas administrativas", "ver detalles", "ver reportes", "reporte", "nuevo reporte", "event", "report_problem", "medical_services", "gavel"] },
+    { label: "Firma", desktopLabel: "Firma", href: "/firma/", aliases: ["contratos", "contrato", "firma", "firmar", "description"] }
   ];
 
   function normalize(value) {
@@ -55,7 +55,7 @@
     nav.innerHTML = demoPages
       .map((page) => {
         const active = window.location.pathname === page.href;
-        return `<a href="${page.href}" ${active ? 'aria-current="page"' : ""}>${page.label}</a>`;
+        return `<a href="${page.href}" data-desktop-label="${page.desktopLabel}" ${active ? 'aria-current="page"' : ""}><span>${page.label}</span></a>`;
       })
       .join("");
 
@@ -69,7 +69,7 @@
     style.textContent = `
       :root {
         color-scheme: light;
-        --demo-nav-height: 66px;
+        --demo-nav-height: 60px;
         --demo-safe-bottom: env(safe-area-inset-bottom, 0px);
       }
 
@@ -81,8 +81,19 @@
 
       body {
         min-height: 100dvh;
-        padding-bottom: calc(var(--demo-nav-height) + var(--demo-safe-bottom) + 12px);
+        padding-bottom: calc(var(--demo-nav-height) + var(--demo-safe-bottom) + 10px);
         overscroll-behavior-y: none;
+      }
+
+      body > nav.md\\:hidden,
+      body nav.md\\:hidden.fixed.bottom-0,
+      main > nav.md\\:hidden.fixed.bottom-0 {
+        display: none !important;
+      }
+
+      main.md\\:ml-\\[260px\\],
+      .md\\:ml-\\[260px\\] {
+        max-width: none;
       }
 
       button,
@@ -95,34 +106,36 @@
 
       #demo-nav {
         position: fixed;
-        left: 10px;
-        right: 10px;
-        bottom: calc(10px + var(--demo-safe-bottom));
+        left: 12px;
+        right: 12px;
+        bottom: calc(12px + var(--demo-safe-bottom));
         z-index: 99999;
         display: grid;
         grid-template-columns: repeat(5, minmax(0, 1fr));
-        gap: 6px;
-        padding: 8px;
-        border: 1px solid rgba(186, 199, 228, 0.35);
-        border-radius: 16px;
-        background: rgba(0, 3, 12, 0.92);
-        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
-        backdrop-filter: blur(14px);
+        gap: 4px;
+        padding: 6px;
+        border: 1px solid rgba(128, 171, 254, 0.24);
+        border-radius: 14px;
+        background: rgba(0, 3, 12, 0.94);
+        box-shadow: 0 10px 26px rgba(0, 0, 0, 0.24);
+        backdrop-filter: blur(12px);
       }
 
       #demo-nav a {
-        min-height: 42px;
+        min-height: 40px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 0 8px;
+        padding: 0 4px;
         border: 0;
-        border-radius: 10px;
+        border-radius: 9px;
         background: transparent;
         color: #d7e3ff;
-        font: 700 12px/1 Inter, Arial, sans-serif;
+        font: 700 11px/1 Inter, Arial, sans-serif;
+        letter-spacing: 0;
         text-decoration: none;
         white-space: nowrap;
+        overflow: hidden;
       }
 
       #demo-install {
@@ -164,29 +177,40 @@
         }
 
         #demo-nav {
-          top: 14px;
-          right: 18px;
+          top: 10px;
+          right: 14px;
           bottom: auto;
           left: auto;
           display: flex;
           width: auto;
-          max-width: calc(100vw - 320px);
-          border-radius: 14px;
+          max-width: calc(100vw - 360px);
+          gap: 4px;
+          padding: 5px;
+          border-radius: 12px;
+          background: rgba(0, 3, 12, 0.9);
         }
 
         #demo-nav a {
-          min-width: 92px;
-          min-height: 38px;
-          padding: 0 14px;
-          font-size: 13px;
+          min-width: 86px;
+          min-height: 34px;
+          padding: 0 12px;
+          font-size: 12px;
+        }
+
+        #demo-nav a span {
+          display: none;
+        }
+
+        #demo-nav a::before {
+          content: attr(data-desktop-label);
         }
 
         #demo-install {
-          top: 68px;
+          top: 56px;
           right: 24px;
           bottom: auto;
-          min-height: 38px;
-          font-size: 13px;
+          min-height: 34px;
+          font-size: 12px;
         }
       }
 
