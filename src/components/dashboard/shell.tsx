@@ -4,7 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { LogOut, Menu, Search, X } from "lucide-react";
+import { LogOut, Menu, MoreHorizontal, Search, X } from "lucide-react";
 import { Logo } from "@/components/brand/logo";
 import { Avatar } from "@/components/ui/avatar";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -48,6 +48,66 @@ function SidebarNav({
           </Link>
         );
       })}
+    </nav>
+  );
+}
+
+/** Native-style bottom tab bar (mobile only) — primary items + "Más" drawer. */
+function BottomNav({
+  nav,
+  pathname,
+  onMore,
+}: {
+  nav: NavItem[];
+  pathname: string;
+  onMore: () => void;
+}) {
+  const primary = nav.slice(0, 4);
+  return (
+    <nav
+      className="fixed inset-x-0 bottom-0 z-40 flex items-stretch justify-around border-t border-white/10 bg-primary-container px-1 pb-[max(0.4rem,env(safe-area-inset-bottom))] pt-1.5 md:hidden"
+      aria-label="Navegación principal"
+    >
+      {primary.map((item) => {
+        const active =
+          item.href === pathname ||
+          (item.href !== "/app" && item.href !== "/admin" && pathname.startsWith(item.href));
+        const Icon = item.icon;
+        return (
+          <Link
+            key={item.href}
+            href={item.href}
+            className="relative flex flex-1 flex-col items-center gap-0.5 py-1 active:scale-90 transition-transform"
+          >
+            <span
+              className={cn(
+                "grid place-items-center rounded-full px-4 py-1 transition-colors",
+                active ? "bg-secondary-container text-on-secondary-container" : "text-primary-fixed-dim",
+              )}
+            >
+              <Icon className="size-5" strokeWidth={active ? 2 : 1.6} />
+            </span>
+            <span
+              className={cn(
+                "max-w-[64px] truncate text-[10px] font-medium",
+                active ? "text-on-primary" : "text-primary-fixed-dim",
+              )}
+            >
+              {item.label.split(" ")[0]}
+            </span>
+          </Link>
+        );
+      })}
+      <button
+        onClick={onMore}
+        className="relative flex flex-1 flex-col items-center gap-0.5 py-1 active:scale-90 transition-transform"
+        aria-label="Más opciones"
+      >
+        <span className="grid place-items-center rounded-full px-4 py-1 text-primary-fixed-dim">
+          <MoreHorizontal className="size-5" strokeWidth={1.6} />
+        </span>
+        <span className="text-[10px] font-medium text-primary-fixed-dim">Más</span>
+      </button>
     </nav>
   );
 }
@@ -202,6 +262,9 @@ export function DashboardShell({
           {children}
         </motion.main>
       </div>
+
+      {/* Native-style bottom tab bar (mobile) */}
+      <BottomNav nav={nav} pathname={pathname} onMore={() => setDrawer(true)} />
     </div>
   );
 }

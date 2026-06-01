@@ -9,7 +9,10 @@ export default function manifest(): MetadataRoute.Manifest {
     short_name: "San Antonio HCM",
     description:
       "Sistema operativo de capital humano para empresas de seguridad privada: expediente digital, incidencias, firma digital y reportes.",
-    start_url: "/",
+    // Instalada como PWA abre directo en la app (experiencia nativa),
+    // no en la landing de marketing.
+    start_url: "/app",
+    id: "/app",
     display: "standalone",
     orientation: "portrait",
     background_color: brand.backgroundColor,

@@ -80,9 +80,9 @@ export function Hero() {
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link href="/como-funciona">
+                <Link href="/app">
                   <PlayCircle className="size-4" />
-                  Ver cómo funciona
+                  Ver la app en vivo
                 </Link>
               </Button>
             </motion.div>

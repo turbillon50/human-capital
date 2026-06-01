@@ -37,7 +37,7 @@ export function DemoModeSwitcher() {
   };
 
   return (
-    <div className="fixed bottom-5 right-5 z-[90] flex flex-col items-end gap-3 print:hidden">
+    <div className="fixed bottom-20 right-4 z-[95] flex flex-col items-end gap-3 md:bottom-5 md:right-5 print:hidden">
       <AnimatePresence>
         {open && (
           <motion.div
@@ -97,12 +97,14 @@ export function DemoModeSwitcher() {
         layout
         onClick={() => setOpen((v) => !v)}
         whileTap={{ scale: 0.95 }}
-        className="group flex items-center gap-2.5 rounded-full border border-white/10 bg-primary-container px-4 py-3 text-sm font-semibold text-on-primary shadow-2xl ring-1 ring-secondary/30 transition-all hover:ring-secondary/60"
+        animate={open ? {} : { boxShadow: ["0 0 0 0 rgba(45,93,171,0.5)", "0 0 0 10px rgba(45,93,171,0)", "0 0 0 0 rgba(45,93,171,0)"] }}
+        transition={{ duration: 2.2, repeat: open ? 0 : Infinity, repeatDelay: 1 }}
+        className="group flex items-center gap-2.5 rounded-full border border-white/10 bg-primary-container px-4 py-3 text-sm font-semibold text-on-primary shadow-2xl ring-1 ring-secondary/40 transition-all hover:ring-secondary/70"
       >
         <span className="grid size-6 place-items-center rounded-full bg-secondary text-white">
           <Clapperboard className="size-3.5" strokeWidth={2} />
         </span>
-        <span className="hidden sm:inline">Modo demo</span>
+        <span>Modo demo</span>
         <span className="rounded-full bg-white/10 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide text-primary-fixed-dim">
           {OPTIONS.find((o) => o.mode === mode)?.label}
         </span>
